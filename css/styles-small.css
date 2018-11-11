@@ -1,0 +1,13 @@
+/* HEADER */
+
+header {
+    display: flex;
+    justify-content: center;
+    border-bottom: 2px grey dashed;
+}
+
+/* SLIDESHOW */
+
+#slideshow {
+    display: none;
+}

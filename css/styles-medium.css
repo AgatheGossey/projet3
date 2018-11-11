@@ -1,0 +1,53 @@
+@media all and (min-width: 700px) {
+
+    /* SLIDESHOW */
+
+    #slideshow {
+        display: inline;
+    }
+
+    #slider {
+        display: flex;
+        align-items: center;
+        margin: 2em auto 0 auto;
+        max-width: 90%;
+    }
+
+    #images {
+        width: 100%;
+        border: 10px solid white;
+        box-shadow: 0px 0px 5px 2px #ccc;
+    }
+
+    .buttonSlider {   
+        padding: 12px;
+        border: none;
+        background: grey;
+        font-size: 1em;
+        height: 42px;
+        color: white;
+        opacity: 0.3;
+        cursor: pointer;
+    }
+
+    .buttonSlider:hover {
+        opacity: 1;
+    }
+
+    .next.fa.fa-chevron-right {
+        border-radius: 0px 10px 10px 0px;  
+    }
+
+    .prev.fa.fa-chevron-left {
+        border-radius: 10px 0px 0px 10px;
+    }
+
+    #pause {
+        text-align: center;
+    }
+
+    .pause.fa.fa-pause {
+        border-radius: 10px;
+    }
+
+}

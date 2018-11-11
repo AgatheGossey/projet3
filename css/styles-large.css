@@ -1,0 +1,13 @@
+@media all and (min-width: 992px) {
+
+    #slider {
+        max-width: 80%;
+    }
+
+    .buttonSlider {  
+        padding: 20px;
+        height: 50px;
+        font-size: 1em;
+    }
+
+}
