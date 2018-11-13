@@ -11,3 +11,11 @@ header {
 #slideshow {
     display: none;
 }
+
+/* SIGNATURE */
+
+#signature {
+    width: 320px;
+    height: 160px;
+    border: 1px solid blue;
+}
