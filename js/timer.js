@@ -4,7 +4,7 @@ var timer = {
         this.timer = document.getElementById(timerId);
         this.button = document.getElementById("buttonReservation");
         this.textTimerElt = document.getElementById("textTimer");
-        this.counter = 1200;
+        this.counter = 1200; // number of seconds in 20 minutes
         this.addListeners();
     },
     
@@ -13,8 +13,8 @@ var timer = {
     },
     
     startTimer: function () {
-        this.intervalId = setInterval(this.decreaseTimer.bind(this), 1000);
-        this.button.setAttribute("disabled", true);
+        this.intervalId = setInterval(this.decreaseTimer.bind(this), 1000); // call the "decreaseTimer" function repeatedly, with a delay set at 1000 milliseconds
+        this.button.setAttribute("disabled", true); // disable the reservation button
     },
     
     decreaseTimer: function() {
@@ -22,19 +22,19 @@ var timer = {
             this.counter = this.counter - 1;
             this.formatTimer();
         } else {
-            clearInterval(this.intervalId);
+            clearInterval(this.intervalId); // clears a timer set with the setInterval() method
             this.textTimerElt.textContent = "Votre réservation a expiré";
-            this.resetTimer();
+            this.resetTimer(); 
         }
     },
 
     formatTimer: function() {
-        var minutes = Math.trunc(this.counter / 60);
-        var seconds = this.counter % 60;
-        this.textTimerElt.textContent = "Temps restant : " + minutes + "min et " + seconds +"s";
+        var minutes = Math.trunc(this.counter / 60); // Math.trunc : the number is rounded to the nearest integer to zero // Calculate the number of minutes based on the number of seconds remaining
+        var seconds = this.counter % 60; // % : modulus operator who returns the division remainder
+        this.textTimerElt.textContent = "Temps restant : " + minutes + "min et " + seconds +"s"; 
     },
 
-    resetTimer: function() {
+    resetTimer: function() { // reactive the reservation button and restrarts the counter
         this.button.removeAttribute("disabled");
         this.counter = 1200;
     }
