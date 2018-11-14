@@ -1,104 +1,103 @@
-function canvas() {
+var canvas = {
 
-    // THE SIGNATURE CONTEXT
+    init : function(signatureId) {
+        this.signature = document.getElementById(signatureId);
+        this.ctx = signature.getContext("2d"); // context
+        this.ctx.lineWidth = 1; // the width of the lines used for strokes
+        this.sign = false;
+        this.mousePosition = { 
+            x:0,
+            y:0
+        };
+        this.lastPosition = this.mousePosition;
+        this.addListeners();
+    },
 
-    var signature = document.getElementById("signature");
-    var ctx = signature.getContext("2d"); // context
-    ctx.strokeStyle = "black"; // the color used for strokes
-    ctx.lineWidth = 0.05; // the width of the lines used for strokes
-
-    var sign = false;
-
-    // MOUSE EVENTS
-
-    // Set up mouse events for signature
-    var mousePosition = { 
-        x:0,
-        y:0
-    };
-    var lastPosition = mousePosition;
+    addListeners: function() {
 
     // To activate signature mode
-    signature.addEventListener("mousedown", activateSignatureMouse);
+    signature.addEventListener("mousedown", this.activateSignatureMouse.bind(this));
+    signature.addEventListener("touchstart", this.activateSignatureTouch.bind(this));
+
     // To deactivate signature mode
-    signature.addEventListener("mouseup", deactivateSignatureMouse);
+    signature.addEventListener("mouseup", this.deactivateSignatureMouse.bind(this));
+    signature.addEventListener("touchend", this.deactivateSignatureTouch.bind(this));
+
     // Change mouse position for sign
-    signature.addEventListener("mousemove", startSignatureMouse);
+    signature.addEventListener("mousemove", this.startSignatureMouse.bind(this));
+    signature.addEventListener("touchmove", this.startSignatureTouch.bind(this));
 
-    function activateSignatureMouse(e) {
-        sign = true;
-        lastPosition = getMousePosition(signature, e);  //returns the mouse coordinates based on the position of the canvas and the position of the users mouse
-    }
+    },
 
-    function deactivateSignatureMouse() {
-        sign = false;
-    }
+    // MOUSE EVENTS 
 
-    function startSignatureMouse(e) {
-        mousePosition = getMousePosition(signature, e);
-        signLoop();
-    }
+    activateSignatureMouse: function(e) {
+        this.sign = true;
+        this.lastPosition = this.getMousePosition(signature, e);  //returns the mouse coordinates based on the position of the canvas and the position of the users mouse
+    },
 
-    function getMousePosition(canvasDom, mouseEvent) {
+    deactivateSignatureMouse: function() {
+        this.sign = false;
+    },
+
+    startSignatureMouse: function(e) {
+        this.mousePosition = this.getMousePosition(signature, e);
+        this.signLoop();
+    },
+
+    getMousePosition: function(canvasDom, mouseEvent) {
         var rect = canvasDom.getBoundingClientRect(); //method which sends the size and the position of the canvas relative to viewport
         return {
           x: mouseEvent.clientX - rect.left, // x position of the mouse relative to the canvas // calculates the difference between the mouse coordinates and the left side of the viewport
           y: mouseEvent.clientY - rect.top // y position within the canvas
         };
-      }
+    },
 
-    // TOUCH EVENTS
+    // TOUCH EVENTS 
 
-    // To activate signature mode
-    signature.addEventListener("touchstart", activateSignatureTouch);
-    // To deactivate signature mode
-    signature.addEventListener("touchend", deactivateSignatureTouch);
-    // Change mouse position for sign
-    signature.addEventListener("touchmove", startSignatureTouch);
-
-    function activateSignatureTouch(e) {
-        sign = true;
-        lastPosition = getTouchPosition(signature, e); 
+    activateSignatureTouch: function(e) {
+        this.sign = true;
+        this.lastPosition = this.getTouchPosition(signature, e); 
         var touch = e.touches[0]; //reference first touch point 
-    }
-    function deactivateSignatureTouch(e) {
-        sign = false;
-    }
-    function startSignatureTouch(e) {
-        mousePosition = getTouchPosition(signature, e);
-        var touch = e.touches[0];
-        signLoop();
-    }
+    },
 
-    function getTouchPosition(canvasDom, touchEvent) {
+    deactivateSignatureTouch: function() {
+        this.sign = false;
+    },
+
+    startSignatureTouch: function(e) {
+        this.mousePosition = this.getTouchPosition(signature, e);
+        var touch = e.touches[0];
+        this.signLoop();
+    },
+
+    getTouchPosition: function(canvasDomn, touchEvent) {
         var rect = canvasDom.getBoundingClientRect();
         return {
             x: touchEvent.touches[0].clientX - rect.left,
             y: touchEvent.touches[0].clientY - rect.top
         };
-    }
-    
-    // DRAW TO THE CANVAS
-    function renderCanvas() {
-        if (sign) {
-            ctx.moveTo(lastPosition.x, lastPosition.y); // moves the path
-            ctx.lineTo(mousePosition.x, mousePosition.y); // adds a new point, creates a ligne (without tracing)
-            ctx.stroke(); // draws the path
-            lastPosition = mousePosition;
+    },
+
+    // DRAW TO THE CANVAS 
+
+    renderCanvas: function() {
+        if (this.sign) {
+            this.ctx.moveTo(this.lastPosition.x, this.lastPosition.y); // moves the path
+            this.ctx.lineTo(this.mousePosition.x, this.mousePosition.y); // adds a new point, creates a ligne (without tracing)
+            this.ctx.stroke(); // draws the path
+            this.lastPosition = this.mousePosition;
         }
-    }
-        
-    // ALLOW FOR ANIMATION
-    function signLoop () {
-        if(sign) {
-            window.requestAnimationFrame(signLoop);
-            renderCanvas();  
+    },
+
+    // ALOW FOR ANIMATION
+
+    signLoop: function() {
+        if(this.sign) {
+            window.requestAnimationFrame(this.signLoop);
+            this.renderCanvas();  
         }
-    };
-    
-    };
+    },
 
-canvas();
-
-
+};
 
