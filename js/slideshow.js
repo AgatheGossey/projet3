@@ -16,8 +16,6 @@ var slider = {
 		document.getElementById("images").addEventListener("click", this.nextImage.bind(this));
 		document.querySelector(".pause").addEventListener("click", this.stopSlider.bind(this));
 		document.addEventListener("keypress", this.keyPress.bind(this));
-		document.querySelector(".next").addEventListener("click", this.stopSlider.bind(this));
-		document.querySelector(".prev").addEventListener("click", this.stopSlider.bind(this));
 	},
 
 	startSlider: function () {
@@ -31,6 +29,8 @@ var slider = {
 			this.currentImage = 1;
 		}	
 		this.slideshow.setAttribute("src", this.image[this.currentImage-1]+".jpg");
+
+		this.stopSlider();
 	},
 
 	prevImage: function() {
@@ -40,6 +40,8 @@ var slider = {
 			this.currentImage = this.image.length;
 		}
 		this.slideshow.setAttribute("src", this.image[this.currentImage-1]+".jpg");
+
+		this.stopSlider();
 	},
 
 	keyPress: function(e) {
