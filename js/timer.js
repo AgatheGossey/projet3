@@ -1,10 +1,11 @@
 var timer = {
 
-    init: function(timerId) {
+    init: function(timerId, duration) {
         this.timer = document.getElementById(timerId);
+        this.selectedDuration = duration;
         this.button = document.getElementById("buttonReservation");
         this.textTimerElt = document.getElementById("textTimer");
-        this.counter = 1200; // number of seconds in 20 minutes
+        this.counter = duration; // number of seconds in 20 minutes
         this.addListeners();
     },
     
@@ -36,7 +37,7 @@ var timer = {
 
     resetTimer: function() { // reactive the reservation button and restrarts the counter
         this.button.removeAttribute("disabled");
-        this.counter = 1200;
+        this.counter = this.selectedDuration;
     }
 
     };

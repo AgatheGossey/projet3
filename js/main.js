@@ -4,7 +4,7 @@ mainSlider.init("images");
 
 // TIMER
 var mainTimer = Object.create(timer);
-mainTimer.init("buttonReservation");
+mainTimer.init("buttonReservation", 1200);
 
 
 
