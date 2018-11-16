@@ -19,3 +19,11 @@ header {
     height: 160px;
     border: 1px solid blue;
 }
+
+/* MAP */
+
+#map {
+    margin: auto;
+    width: 80%;
+    height: 500px;
+}
