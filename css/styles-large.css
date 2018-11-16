@@ -1,7 +1,12 @@
 @media all and (min-width: 992px) {
 
     #slider {
-        max-width: 80%;
+        max-width: 90%;
+        margin: auto;
+    }
+
+    #images {
+        width: 100%;
     }
 
     .buttonSlider {  

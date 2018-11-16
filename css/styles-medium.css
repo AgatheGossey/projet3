@@ -3,18 +3,16 @@
     /* SLIDESHOW */
 
     #slideshow {
-        display: inline;
+        display: block;
     }
 
     #slider {
         display: flex;
         align-items: center;
-        margin: 2em auto 0 auto;
-        max-width: 90%;
     }
 
     #images {
-        width: 100%;
+        width: 100vw;
         border: 10px solid white;
         box-shadow: 0px 0px 5px 2px #ccc;
     }

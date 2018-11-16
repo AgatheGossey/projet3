@@ -2,9 +2,12 @@
  <html lang="fr">
 
 	 <head>
+		 
+		<title>Ma bicyclette - Application de location de vélo</title>
 
 		<meta charset="utf-8">
-		<title>Carte intéractive de location de vélos</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="Ma bicyclette - Application de location de vélo">
 		<!-- FONT -->
 		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 		<!-- STYLES -->
@@ -23,7 +26,6 @@
 			<img id="logo" src="logo.jpg" alt="Photo du logo : Ma bicyclette"/>
 		 </header>
 		 
-		 <!-- FIRST SECTION -->
 		 <section id="slideshow">
 
 				<!-- SLIDESHOW -->
@@ -41,9 +43,16 @@
 			<canvas id="signature"></canvas>
 			<button id="sendSignature">Envoyer</button>
 		</section>
+
+		<section id="reservation">
+			<!-- TIMER -->
+			<button id="buttonReservation">Réserver</button>
+			<p id="textTimer"></p>
+		</section>
 	
 		<!-- SCRIPT -->
-		<script src="./js/signature.js"></script>
+    <script src="./js/signature.js"></script>
+		<script src="./js/timer.js"></script>
 		<script src="./js/slideshow.js"></script>
 		<script src="./js/main.js"></script>
 
