@@ -1,5 +1,8 @@
 body {
     margin: 0;
+    font-family: 'Ropa Sans', sans-serif;
+    background-image: url("fond.jpg");
+    background-attachment: fixed;
 }
 
 /* HEADER */
@@ -8,19 +11,66 @@ header {
     display: flex;
     justify-content: center;
     border-bottom: 2px grey dashed;
+    background-color: white;
 }
 
 #logo {
     width: 100%;
     height: 100%;
     max-width: 709px;
-
 }
-/* SLIDESHOW */
 
-#slideshow {
+/* SLIDESHOW SECTION */
+
+#slideshowSection {
     display: none;
+    margin: 3em 0;
 }
+
+#slideshowSection h1 {
+    font-family: 'Dancing Script', cursive;
+    padding-left: 20%;
+    font-size: 1.8em;
+    font-weight: 0.5em;
+}
+
+#slideshowSection h1 span {
+    font-size: 2em;
+}
+
+/* MAP SECTION */
+
+#mapSection {
+    background-color: black;
+    position: relative;
+    display: flex;
+}
+
+#stateBikeStation {
+    width: 25%;
+    border: 2px dashed white;
+    margin: 1.5em;
+}
+
+#stateBikeStation h2 {
+    font-size: 1.2em;
+    background-color: white;
+    padding: 1em;
+    text-transform: uppercase;
+}
+
+#descriptionBikeStation {
+    color: white;
+}
+
+#map {
+    width: 75%;
+    height: 600px;
+    margin: 2em;
+    border: 10px solid white;
+}
+
+
 
 /* SIGNATURE */
 
@@ -28,12 +78,4 @@ header {
     width: 320px;
     height: 160px;
     border: 1px solid blue;
-}
-
-/* MAP */
-
-#map {
-    margin: auto;
-    width: 80%;
-    height: 500px;
 }

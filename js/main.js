@@ -11,8 +11,8 @@ mainSignature.init("signature");
 var mainTimer = Object.create(timer);
 mainTimer.init("buttonReservation", 1200);
 
-// // MAP
+// MAP
 
-// var mainMap = Object.create(map);
-// mainMap.init(45.764043, 4.835658999999964);
+var mainMap = Object.create(map);
+mainMap.init(45.764043, 4.835658999999964);
 
