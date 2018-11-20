@@ -1,4 +1,5 @@
 body {
+    border: 1px solid #ce8106;
     margin: 0;
     font-family: 'Ropa Sans', sans-serif;
     background-image: url("fond.jpg");
@@ -10,8 +11,18 @@ body {
 header {
     display: flex;
     justify-content: center;
+    padding-bottom: 60px;
     border-bottom: 2px grey dashed;
     background-color: white;
+}
+
+header h1 {
+    position: absolute;
+    padding: 0 200px;
+    top: 8%;
+    font-size: 1em;
+    background-color: #ce8106;
+    color: white;
 }
 
 #logo {
@@ -50,16 +61,92 @@ header {
     width: 25%;
     border: 2px dashed white;
     margin: 1.5em;
+    position: relative;
 }
 
-#stateBikeStation h2 {
+#stateBikeStation h2, form {
+    margin: 0;
     font-size: 1.2em;
     background-color: white;
     padding: 1em;
     text-transform: uppercase;
 }
 
+form {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 0;
+}
+/* SIGNATURE */
+
+#signature {
+    position: absolute;
+    transform: translateX(-50%);
+    left: 50%;
+    margin-top: 20px;
+    width: 300px;
+    height: 140px;
+    border: 3px solid #ce8106;
+}
+
+#signatureTitle {
+    position: relative;
+    top: 20px;
+    margin-top: 22px;
+}
+
 #descriptionBikeStation {
+    margin: 5px;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    font-size: 1.3em;
+}
+
+span {
+    font-size: 1em;
+    font-family: 'Dancing Script', cursive;
+    font-weight: normal;
+
+}
+
+#reservation {
+    text-align: center;
+}
+
+#clearSignature, #buttonReservation, #annulerElt {
+    position: relative;
+    top: 190px;
+    margin: 0 10px;
+	padding:6px 9px;
+	background: black;
+    color: white;
+    font-size: 1.1em;
+	border-radius:2px;
+	width: 100px;
+	border: 1px solid white;
+    box-shadow:2px 2px 5px #999;
+    cursor: pointer;  
+}
+
+#clearSignature:hover, #buttonReservation:hover {
+    background-color: #ce8106;
+}
+
+#clearSignature:disabled, #buttonReservation:disabled {
+    background-color: #ccc;
+    cursor: none;
+    border: none;
+}
+
+ 
+
+
+#textTimer {
+    position: relative;
+    top: 190px;
+    font-size: 1.2em;
     color: white;
 }
 
@@ -68,14 +155,4 @@ header {
     height: 600px;
     margin: 2em;
     border: 10px solid white;
-}
-
-
-
-/* SIGNATURE */
-
-#signature {
-    width: 320px;
-    height: 160px;
-    border: 1px solid blue;
 }

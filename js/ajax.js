@@ -10,7 +10,6 @@ function ajaxGet(url, callback) {
         if (req.status >= 200 && req.status < 400) { // Le serveur a réussi à traiter la requête
             callback(req.responseText);
         } else {
-
             console.error(req.status + " " + req.statusText); // Affichage des informations sur l'échec du traitement de la requête
         }
     });

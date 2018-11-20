@@ -29,11 +29,12 @@
 		 <header>
 		<!-- LOGO -->
 			<img id="logo" src="logo.jpg" alt="Photo du logo : Ma bicyclette"/>
+			<h1>Application de location de vélo - Lyon</h1>
 		 </header>
 		 
 		 <section id="slideshowSection">
 
-				<h1>Se déplacer, en toute liberté !</h1>
+				<h1>Comment ça marche ?</h1>
 
 
 			<!-- SLIDESHOW -->
@@ -49,26 +50,42 @@
 		</section>
 
 		<section id="mapSection">
+
 			<div id=stateBikeStation>
+
 				<h2>Détails de la station :</h2>
 				<p id="descriptionBikeStation"></p>
+				<form>
+					<p>
+						<label for="nom">Nom</label> :
+						<input type="text" name="name" id="name" required>
+					</p>
+					<p>
+						<label for="prénom">Prénom</label> :
+						<input type="text" name="surname" id="surname" required>
+						</p>
+				</form>
+				<h2 id="signatureTitle">Signature :</h2>
+
+				<div id="canvas">
+						<canvas id="signature"></canvas>
+				</div>
+			
+				<div id="reservation">
+						<!-- TIMER -->
+						<button id="clearSignature">Effacer</button>
+						<button id="buttonReservation">Réserver</button>
+						<p id="textTimer"></p>
+				</div>
+
 			</div>
+			
 			<div id="map"></div>
 			
 		</section>
 
 
-		<section id="canvasSection">
-			<canvas id="signature"></canvas>
-			<button id="sendSignature">Envoyer</button>
-		</section>
-
-		<section id="reservationSection">
-
-			<!-- TIMER -->
-			<button id="buttonReservation">Réserver</button>
-			<p id="textTimer"></p>
-		</section>
+		
 	
 		<!-- SCRIPT -->
 

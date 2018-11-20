@@ -4,7 +4,9 @@ var canvas = {
         this.signature = document.getElementById(signatureId);
         this.ctx = signature.getContext("2d"); // context
         this.ctx.lineWidth = 1; // the width of the lines used for strokes
+        this.ctx.strokeStyle = "white";
         this.sign = false;
+        this.clearSignature = document.getElementById("clearSignature");
         this.mousePosition = { 
             x:0,
             y:0
@@ -23,9 +25,13 @@ var canvas = {
     signature.addEventListener("mouseup", this.deactivateSignatureMouse.bind(this));
     signature.addEventListener("touchend", this.deactivateSignatureTouch.bind(this));
 
-    // Change mouse position for sign
+    // Change mouse/touch position for sign
     signature.addEventListener("mousemove", this.startSignatureMouse.bind(this));
     signature.addEventListener("touchmove", this.startSignatureTouch.bind(this));
+
+    // Clear the signature
+    clearSignature.addEventListener("click", this.clearSignatureMouse.bind(this));
+    // clearSignature.addEventListener("click", this.clearSignatureTouch.bind(this));
 
     },
 
@@ -51,6 +57,11 @@ var canvas = {
           x: mouseEvent.clientX - rect.left, // x position of the mouse relative to the canvas // calculates the difference between the mouse coordinates and the left side of the viewport
           y: mouseEvent.clientY - rect.top // y position within the canvas
         };
+    },
+
+    clearSignatureMouse: function() {
+        this.clearCanvas();
+        this.init();
     },
 
     // TOUCH EVENTS 
@@ -88,6 +99,10 @@ var canvas = {
             this.ctx.stroke(); // draws the path
             this.lastPosition = this.mousePosition;
         }
+    },
+
+    clearCanvas: function () {
+        signature.width = signature.width
     },
 
     // ALOW FOR ANIMATION

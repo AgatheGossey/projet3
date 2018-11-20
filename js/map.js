@@ -6,6 +6,7 @@ var map = {
             maxZoom: 18,
         }).addTo(this.map);
         this.getStations();
+        // this.button = document.getElementById("buttonReservation");
     },
 
     getStations: function() { // make an asynchronous HTTP request to the URL and executes the return function
@@ -30,6 +31,12 @@ var map = {
         var status = station.status; // recover the status of the station
         var available_bikes = station.available_bikes; // recover the number of bikes available
         var stateElt = document.getElementById("descriptionBikeStation");
-        stateElt.innerHTML = address + "<br/>" + "Etat de la station : " + status + " <br/> Nombre de vélos disponibles : " + available_bikes; // adding text on the site
-    }
-}
+        stateElt.innerHTML = "</br> <span>Adresse : </span>" + address + "<br/>" + "<span>Etat de la station : </span>" + status + " <br/> <span>Nombre de vélo(s) disponible(s) : </span>" + available_bikes; // adding text on the site
+        // if (status = "CLOSE") {
+        //     console.log("coucou");
+        //     this.button.setAttribute("disabled", "true");
+    // }
+    },
+
+
+};

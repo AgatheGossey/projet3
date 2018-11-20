@@ -4,20 +4,42 @@ var timer = {
         this.timer = document.getElementById(timerId);
         this.selectedDuration = duration;
         this.button = document.getElementById("buttonReservation");
+        this.clearSignature = document.getElementById("clearSignature");
         this.textTimerElt = document.getElementById("textTimer");
         this.counter = duration; // number of seconds in 20 minutes
         this.addListeners();
+        this.cancelElt = document.getElementById("buttonReservation");
+        this.isStarted = true;
     },
     
     addListeners: function() {
-        document.getElementById("buttonReservation").addEventListener("click", this.startTimer.bind(this));
+        document.getElementById("buttonReservation").addEventListener("click", this.buttonReservationEvent.bind(this))
+    },
+
+    buttonReservationEvent: function() {
+        if (this.isStarted === true) {
+            this.startTimer();
+        } else if  (this.isStarted === false) {
+            clearInterval(this.intervalId);
+            this.button.textContent = "Réserver";
+            this.textTimerElt.textContent = "";
+            this.resetTimer();
+            this.isStarted = true;
+        }
     },
     
     startTimer: function () {
+        this.isStarted = true;
         this.intervalId = setInterval(this.decreaseTimer.bind(this), 1000); // call the "decreaseTimer" function repeatedly, with a delay set at 1000 milliseconds
-        this.button.setAttribute("disabled", true); // disable the reservation button
+        this.cancelTimer();
+        this.clearSignature.setAttribute("disabled", true); // disable the reservation button
     },
     
+    cancelTimer : function() {
+        this.isStarted = false;
+        this.cancelElt.textContent = "Annuler";
+    },
+
     decreaseTimer: function() {
         if (this.counter > 1) {
             this.counter = this.counter - 1;
@@ -36,10 +58,9 @@ var timer = {
     },
 
     resetTimer: function() { // reactive the reservation button and restrarts the counter
-        this.button.removeAttribute("disabled");
+        this.clearSignature.removeAttribute("disabled");
         this.counter = this.selectedDuration;
     }
-
     };
     
    
