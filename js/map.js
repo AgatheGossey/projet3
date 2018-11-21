@@ -3,10 +3,10 @@ var map = {
     init: function(lat, lon) {
         this.map = L.map("map").setView([lat, lon], 14); // creation of the map
         L.tileLayer("https://korona.geog.uni-heidelberg.de/tiles/roads/x={x}&y={y}&z={z}", { // creating the image layer
-            maxZoom: 18,
+            maxZoom: 20,
         }).addTo(this.map);
         this.getStations();
-        // this.button = document.getElementById("buttonReservation");
+        this.button = document.getElementById("buttonReservation");
     },
 
     getStations: function() { // make an asynchronous HTTP request to the URL and executes the return function
@@ -14,7 +14,6 @@ var map = {
     },
 
     markersPosition: function(markers) {
-        console.log(markers);
         markers = JSON.parse(markers); // turn the response into a JavaScript objects
         markers.forEach(function(marker) {
             var markerElt = L.marker([marker.position.lat, marker.position.lng]).addTo(this.map); // adding markers on the map
@@ -32,11 +31,9 @@ var map = {
         var available_bikes = station.available_bikes; // recover the number of bikes available
         var stateElt = document.getElementById("descriptionBikeStation");
         stateElt.innerHTML = "</br> <span>Adresse : </span>" + address + "<br/>" + "<span>Etat de la station : </span>" + status + " <br/> <span>Nombre de vélo(s) disponible(s) : </span>" + available_bikes; // adding text on the site
-        // if (status = "CLOSE") {
-        //     console.log("coucou");
-        //     this.button.setAttribute("disabled", "true");
-    // }
+        if (status === "CLOSED" || available_bikes === 0 ) {
+            this.button.setAttribute("disabled", "true");
+    }
     },
-
 
 };
