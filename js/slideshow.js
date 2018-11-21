@@ -1,5 +1,3 @@
-
-
 var slider = {
 
 	init: function(sliderId) {
