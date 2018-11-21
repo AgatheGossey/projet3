@@ -1,20 +1,20 @@
-// CODE GENERIQUE 
-// Exécute un appel AJAX GET
-// Prend en paramètres l'URL cible et la fonction callback appelée en cas de succès 
+// Make a call AJAX GET
+
+// Takes into parameters the URL and callback function called on success
 function ajaxGet(url, callback) {
-    // Création d'une requête HTTP
+    // Create an HTTP request
     var req = new XMLHttpRequest();
-    req.open("GET", url); //// Requête HTTP GET asynchrone vers l'URL
-    // Gestion de l'événement indiquant la fin de la requête
+    req.open("GET", url); // Asynchronous HTTP GET request to URL
+    // Creating the event indicating the end of the request
     req.addEventListener("load", function () {
-        if (req.status >= 200 && req.status < 400) { // Le serveur a réussi à traiter la requête
+        if (req.status >= 200 && req.status < 400) { // The server has successfully processed the request
             callback(req.responseText);
         } else {
-            console.error(req.status + " " + req.statusText); // Affichage des informations sur l'échec du traitement de la requête
+            console.error(req.status + " " + req.statusText); // View information about failed request processing
         }
     });
     req.addEventListener("error", function () {
-        console.error("Erreur réseau avec l'URL " + url); // La requête n'a pas réussi à atteindre le serveur
+        console.error("Erreur réseau avec l'URL " + url); // The request failed to reach the server + url 
     });
     req.send(null);
     }
