@@ -23,6 +23,7 @@ var map = {
 
     addListener: function(markerElt, marker) {
         markerElt.addEventListener("click", function() { this.describeStation(marker) }.bind(this));
+       
     },
 
     describeStation: function(station) {
@@ -33,7 +34,8 @@ var map = {
         stateElt.innerHTML = "</br> <span>Adresse : </span>" + address + "<br/>" + "<span>Etat de la station : </span>" + status + " <br/> <span>Nombre de vélo(s) disponible(s) : </span>" + available_bikes; // adding text on the site
         if (status === "CLOSED" || available_bikes === 0 ) {
             this.button.setAttribute("disabled", "true");
+        } else { this.button.removeAttribute("disabled");
+        }
     }
-    },
 
 };
