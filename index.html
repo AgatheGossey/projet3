@@ -7,8 +7,7 @@
 		<meta charset="utf-8">
 		<title>Carte intéractive de location de vélos - Lyon</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="description" content="Ma bicyclette - Application de location de vélo">
-		
+		<meta name="description" content="Ma bicyclette - Application de location de vélo à Lyon">
 		
 		<!-- FONTS -->
 		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin=""/>
@@ -27,15 +26,15 @@
 
 		<!-- HEADER -->
 		 <header>
-		<!-- LOGO -->
+			<!-- Logo -->
 			<img id="logo" src="logo.jpg" alt="Photo du logo : Ma bicyclette"/>
 			<h1>Application de location de vélo - Lyon</h1>
 		 </header>
 		 
+		<!-- FIRST SECTION -->
 		 <section id="slideshowSection">
 
 				<h1>Comment ça marche ?</h1>
-
 
 			<!-- SLIDESHOW -->
 			<div id="slider">
@@ -49,48 +48,55 @@
 
 		</section>
 
+		<!-- SECOND SECTION -->
 		<section id="mapSection">
 
-			<div id=stateBikeStation>
+			<div id="mapContainer">
 
-				<h2>Détails de la station :</h2>
-				<p id="descriptionBikeStation"></p>
-				<form>
-					<p>
-						<label for="nom">Nom</label> :
-						<input type="text" name="name" id="name" required>
-					</p>
-					<p>
-						<label for="prénom">Prénom</label> :
-						<input type="text" name="surname" id="surname" required>
+				<div id=stateReservationTimer>
+
+				<!-- STATE OF THE STATION -->
+					<h2>Détails de la station :</h2>
+					<p id="descriptionBikeStation"></p>
+
+				<!-- RESERVATION -->	
+					<!-- indicating his name and surname -->
+					<form>
+						<p>
+							<label for="nom">Nom</label> :
+							<input type="text" name="name" id="name" required>
 						</p>
-				</form>
-				<h2 id="signatureTitle">Signature :</h2>
-
-				<div id="canvas">
-						<canvas id="signature"></canvas>
+						<p>
+							<label for="prénom">Prénom</label> :
+							<input type="text" name="surname" id="surname" required>
+							</p>
+					</form>
+					<!-- sign -->
+					<h2 id="signatureTitle">Signature :</h2>
+					<div id="canvas">
+							<canvas id="signature"></canvas>
+					</div>
+				
+				<!-- TIMER -->
+					<div id="timer">
+							<button id="clearSignature">Effacer</button>
+							<button id="buttonReservation">Réserver</button>
+					</div>
 				</div>
-			
-				<div id="reservation">
-						<!-- TIMER -->
-						<button id="clearSignature">Effacer</button>
-						<button id="buttonReservation">Réserver</button>
-						<p id="textTimer"></p>
-				</div>
-
+				
+				<!-- MAP -->
+				<div id="map"></div>
 			</div>
-			
-			<div id="map"></div>
+
+			<!-- TEXT OF THE RESERVATION  -->
+			<div id="textReservation">
+				<p id="textTimer"></p>
+			</div>
 			
 		</section>
 
-
-		
-	
 		<!-- SCRIPT -->
-
 		<script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js" integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA==" crossorigin=""></script>
-
 		<script src="./js/ajax.js"></script>	
 		<script src="./js/map.js"></script>
 		<script src="./js/signature.js"></script>

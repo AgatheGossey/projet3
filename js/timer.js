@@ -54,7 +54,7 @@ var timer = {
     formatTimer: function() {
         var minutes = Math.trunc(this.counter / 60); // Math.trunc : the number is rounded to the nearest integer to zero // Calculate the number of minutes based on the number of seconds remaining
         var seconds = this.counter % 60; // % : modulus operator who returns the division remainder
-        this.textTimerElt.textContent = "Temps restant : " + minutes + "min et " + seconds +"s"; 
+        this.textTimerElt.innerHTML = "Vélo réservé à la station ____ par_____ <br/> Temps restant : " + minutes + "min et " + seconds +"s"; 
     },
 
     resetTimer: function() { // reactive the reservation button and restrarts the counter
@@ -70,5 +70,3 @@ var timer = {
 
 
     
-
-
