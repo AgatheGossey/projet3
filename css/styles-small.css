@@ -71,23 +71,24 @@ header h1 {
     margin: 0;
     font-size: 1.2em;
     background-color: white;
-    padding: 1em;
+    padding: 0.5em;
     text-transform: uppercase;
 }
 
 /* State of the station */
 #descriptionBikeStation {
-    margin: 5px;
+    margin: 0.5em;
     text-align: center;
     color: white;
     font-weight: bold;
-    font-size: 1.3em;
+    font-size: 1.4em;
 }
 
 /* Reservation */
 
 /* form */
 form {
+    margin: 1em;
     background-color: black;
     color: white;
     text-align: center;
@@ -95,11 +96,10 @@ form {
 }
 
 /* signature */
-#signature {
+.signatureContainer {
     position: absolute;
     transform: translateX(-50%);
     left: 50%;
-    margin-top: 20px;
     width: 300px;
     height: 140px;
     border: 3px solid #ce8106;
@@ -108,7 +108,7 @@ form {
 #signatureTitle {
     position: relative;
     top: 20px;
-    margin-top: 22px;
+    padding-bottom: 1em;
 }
 
 #descriptionBikeStation span {
@@ -117,14 +117,21 @@ form {
     font-weight: normal;
 }
 
+#clearSignature {
+    position: relative;
+    text-align: center;
+    top: 8em;
+}
 /* timer */
 #timer {
     text-align: center;
 }
 
-#clearSignature, #buttonReservation, #annulerElt {
-    position: relative;
-    top: 190px;
+#buttonReservation {
+    text-align: center;
+}
+
+button {
     margin: 0 10px;
 	padding:6px 9px;
 	background-color: black;
@@ -135,17 +142,28 @@ form {
 	border: 1px solid white;
     box-shadow:2px 2px 5px #999;
     cursor: pointer;  
+    text-align: center;
 }
 
-#clearSignature:hover, #buttonReservation:hover {
+button:hover {
     background-color: #ce8106;
 }
 
-#clearSignature:disabled, #buttonReservation:disabled {
+button:disabled {
     background-color: #2d2d2d;
     color: #7a7a7a;
     cursor: none;
     border: none;
+}
+
+/* #clearSignature {
+    position: relative;
+    top: 190px;
+} */
+
+#test {
+    position: relative;
+    top: 20em;
 }
 
 /* map */
@@ -162,7 +180,7 @@ form {
 }
 
 #textTimer {
-    padding: 0.5em 0;
+    padding: 1em 0;
     text-align: center;
     font-size: 1.5em;
     color: white;

@@ -13,7 +13,7 @@ var timer = {
     },
     
     addListeners: function() {
-        document.getElementById("buttonReservation").addEventListener("click", this.buttonReservationEvent.bind(this))
+        this.button.addEventListener("click", this.buttonReservationEvent.bind(this))
     },
 
     buttonReservationEvent: function() {
@@ -21,7 +21,7 @@ var timer = {
             this.startTimer();
         } else if  (this.isStarted === false) {
             clearInterval(this.intervalId);
-            this.button.textContent = "Réserver";
+            this.button.innerHTML = "<button>Réserver</button>";
             this.textTimerElt.textContent = "";
             this.resetTimer();
             this.isStarted = true;
@@ -37,7 +37,7 @@ var timer = {
     
     cancelTimer : function() {
         this.isStarted = false;
-        this.cancelElt.textContent = "Annuler";
+        this.cancelElt.innerHTML = "<button>Annuler</button>";
     },
 
     decreaseTimer: function() {
