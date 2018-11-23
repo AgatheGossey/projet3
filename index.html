@@ -26,25 +26,35 @@
 
 		<!-- HEADER -->
 		 <header>
+
 			<!-- Logo -->
 			<img id="logo" src="logo.jpg" alt="Photo du logo : Ma bicyclette"/>
 			<h1>Application de location de vélo - Lyon</h1>
+
 		 </header>
 		 
 		<!-- FIRST SECTION -->
-		 <section id="slideshowSection">
+		<section id="slideshowSection">
 
-				<h1>Comment ça marche ?</h1>
+			<!-- image that replaces the slideshow for smartphones -->
+			<img id="imgExplication" src="imgExplication.png" alt="Explication du fonctionnement de l'application"/>
 
-			<!-- SLIDESHOW -->
-			<div id="slider">
-				<button class="buttonSlider prev fa fa-chevron-left"></button>
-				<img id="images" src="a.jpg" alt="Photo d'explication de l'application"/>
-				<button class="buttonSlider next fa fa-chevron-right"></button>
-			</div>
-			<div id="pause">
-			<button class="buttonSlider pause fa fa-pause"></button>
-			</div>
+			<!-- slideshow container -->
+			<div id="slideshowContainer">
+
+					<h1>Comment ça marche ?</h1>
+
+				<div id="slider">
+					<button class="buttonSlider prev fa fa-chevron-left"></button>
+					<img id="images" src="a.jpg" alt="Photo d'explication de l'application"/>
+					<button class="buttonSlider next fa fa-chevron-right"></button>
+				</div>
+				
+				<div id="pause">
+					<button class="buttonSlider pause fa fa-pause"></button>
+				</div>
+
+			</div>	
 
 		</section>
 
@@ -63,14 +73,15 @@
 				<!-- RESERVATION -->	
 				<div id="reservation">	
 
-				<div id="signatureTitle"></div>
+					<div id="signatureTitle"></div>
 
 				    <!-- form -->
-					<div id="form"></div>
-					<!-- sign -->
-					<div id="canvas">
-							<canvas id="signature"></canvas>
-					</div>
+					<div id="form">
+						<!-- sign -->
+						<div id="canvas">
+								<canvas id="signature"></canvas>
+						</div>
+					</div>	
 				
 				
 				<!-- TIMER -->
@@ -80,6 +91,7 @@
 					</div>
 				</div>
 				</div>
+				
 				<!-- MAP -->
 				<div id="map"></div>
 			</div>

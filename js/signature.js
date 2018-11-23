@@ -2,7 +2,7 @@ var canvas = {
 
     init : function(signatureId) {
         this.signature = document.getElementById(signatureId);
-        this.ctx = signature.getContext("2d"); // context
+        this.ctx = this.signature.getContext("2d"); // context
         this.ctx.lineWidth = 1; // the width of the lines used for strokes
         this.ctx.strokeStyle = "white";
         this.sign = false;

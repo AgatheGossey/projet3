@@ -1,9 +1,34 @@
 @media all and (min-width: 700px) {
 
+    /* HEADER */
+
+    header h1 {
+        padding: 0 200px;
+    }
+
+
     /* FIRST SECTION */
 
-    #slideshowSection {
+    #imgExplication {
+        display: none;
+    }
+
+    /* Slideshow */
+
+    #slideshowSection h1 {
+        font-family: 'Dancing Script', cursive;
+        padding-left: 20%;
+        font-size: 1.8em;
+        font-weight: 0.5em;
+    }
+
+    #slideshowSection h1 span {
+        font-size: 2em;
+    }
+
+    #slideshowContainer {
         display: block;
+        margin: 3em 0;
     }
 
     #slider {
@@ -46,6 +71,13 @@
 
     .pause.fa.fa-pause {
         border-radius: 10px;
+    }
+
+    /* SECOND SECTION */
+
+    #map {
+        margin: auto;
+        width: 90%;
     }
 
 }
