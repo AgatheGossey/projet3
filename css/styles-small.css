@@ -1,5 +1,5 @@
 body {
-    border: 1px solid #ce8106;
+    border: 1,px solid #ce8106;
     margin: 0;
     font-family: 'Ropa Sans', sans-serif;
     background-image: url("fond.jpg");
@@ -84,7 +84,14 @@ header h1 {
     font-size: 1.4em;
 }
 
+#makeAReservation {
+    display: none;
+}
+
 /* Reservation */
+#reservation {
+    display: none;
+}
 
 /* form */
 form {
@@ -96,7 +103,7 @@ form {
 }
 
 /* signature */
-.signatureContainer {
+#signature {
     position: absolute;
     transform: translateX(-50%);
     left: 50%;
@@ -127,10 +134,15 @@ form {
     text-align: center;
 }
 
-#buttonReservation {
+.bookingButton {
+    position: relative;
+    top: 15em;
     text-align: center;
 }
 
+#cancelBooking {
+    display: none;
+}
 button {
     margin: 0 10px;
 	padding:6px 9px;
@@ -161,10 +173,6 @@ button:disabled {
     top: 190px;
 } */
 
-#test {
-    position: relative;
-    top: 20em;
-}
 
 /* map */
 #map {

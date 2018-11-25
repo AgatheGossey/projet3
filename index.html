@@ -50,35 +50,33 @@
 
 		<!-- SECOND SECTION -->
 		<section id="mapSection">
-
 			<div id="mapContainer">
-
 				<div id=stateReservationTimer>
-
-				<!-- STATE OF THE STATION -->
+					<!-- STATE OF THE STATION -->
 					<h2>Détails de la station :</h2>
 					<p id="descriptionBikeStation"></p>
-					<div id="makeAReservation"></div>
+					<button id="makeAReservation">Faire une réservation</button>
 
-				<!-- RESERVATION -->	
-				<div id="reservation">	
-
-				<div id="signatureTitle"></div>
-
-				    <!-- form -->
-					<div id="form"></div>
-					<!-- sign -->
-					<div id="canvas">
-							<canvas id="signature"></canvas>
+					<!-- RESERVATION -->	
+					<div id="reservation">	
+						<h2 id="reservationTitle">Réservation :</h2>
+						<!-- form -->
+						<div id="form">
+							<form>
+								<p><label for="nom">Nom</label> : <input type="text" name="name" id="name" required></input></p>
+								<p><label for="prénom">Prénom</label> : <input type="text" name="surname" id="surname" required></input></p>
+								<input type="submit" id="bookingButton" value="Réserver mon velo" disabled></input>
+								<button id="cancelBooking">Annuler la réservation</button>
+							</form>
+							<!-- sign -->
+							<div id="canvas">
+								<canvas id="signature"></canvas>
+								<button id="clearSignature">Effacer</button>
+							</div>
+						</div>
+						<!-- TIMER -->
+						<div id="timer"></div>
 					</div>
-				
-				
-				<!-- TIMER -->
-					<div id="timer">
-							<div id="clearSignature"></div>
-							<div id="buttonReservation"></div>
-					</div>
-				</div>
 				</div>
 				<!-- MAP -->
 				<div id="map"></div>
