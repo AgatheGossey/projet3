@@ -3,7 +3,7 @@ var map = {
     init: function(lat, lon) {
         this.map = L.map("map").setView([lat, lon], 14); // creation of the map
         L.tileLayer("https://korona.geog.uni-heidelberg.de/tiles/roads/x={x}&y={y}&z={z}", { // creating the image layer
-            maxZoom: 20,
+            maxZoom: 70,
         }).addTo(this.map);
         this.getStations();
         this.mainReservation = Object.create(reservation);

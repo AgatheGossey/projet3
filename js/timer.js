@@ -8,20 +8,6 @@ var timer = {
         this.counter = duration; // number of seconds in 20 minutes
         this.isStarted = false;
     },
-
-    // buttonReservationEvent: function() {
-    //     if (this.isStarted === true) {
-    //         this.startTimer();
-    //     } else if  (this.isStarted === false) {
-    //         clearInterval(this.intervalId);
-    //         this.button.innerHTML = "<button>Réserver</button>";
-    //         this.textTimerElt.textContent = "";
-    //         this.resetTimer();
-    //         this.isStarted = true;
-    //     }
-    // },
-
-
     
     startTimer: function () {
         this.isStarted = true;
@@ -40,9 +26,8 @@ var timer = {
     },
 
     formatTimer: function() {
-        var minutes = Math.trunc(this.counter / 60); // Math.trunc : the number is rounded to the nearest integer to zero // Calculate the number of minutes based on the number of seconds remaining
-        var seconds = this.counter % 60; // % : modulus operator who returns the division remainder
-        this.textTimerElt.innerHTML = "Vélo réservé à la station ____ par_____ <br/> Temps restant : " + minutes + "min et " + seconds +"s"; 
+        this.minutes = Math.trunc(this.counter / 60); // Math.trunc : the number is rounded to the nearest integer to zero // Calculate the number of minutes based on the number of seconds remaining
+        this.seconds = this.counter % 60; // % : modulus operator who returns the division remainder
     },
 
     resetTimer: function() { // reactive the reservation button and restrarts the counter
