@@ -38,70 +38,90 @@
 
 			<!-- SLIDESHOW -->
 			<div id="slider">
+
 				<button class="buttonSlider prev fa fa-chevron-left"></button>
 				<img id="images" src="a.jpg" alt="Photo d'explication de l'application"/>
 				<button class="buttonSlider next fa fa-chevron-right"></button>
 			</div>
+
 			<div id="pause">
-			<button class="buttonSlider pause fa fa-pause"></button>
+				<button class="buttonSlider pause fa fa-pause"></button>
 			</div>
 
 		</section>
 
 		<!-- SECOND SECTION -->
-		<section id="mapSection">
+		<section id="detailsReservationAndMap">
 
-			<div id="mapContainer">
+			<!-- DETAILS OF THE STATION AND RESERVATION OF A BIKE -->
+			<div id="detailsAndReservation">
 
-				<div id=stateReservationTimer>
+				<!-- DETAILS -->
+				<div id="details">
 
-				<!-- STATE OF THE STATION -->
 					<h2>Détails de la station :</h2>
 					<p id="descriptionBikeStation"></p>
+					<button id="makeAReservationButton">Faire une réservation</button>
 
-				<!-- RESERVATION -->	
-					<!-- indicating his name and surname -->
-					<form>
-						<p>
-							<label for="nom">Nom</label> :
-							<input type="text" name="name" id="name" required>
-						</p>
-						<p>
-							<label for="prénom">Prénom</label> :
-							<input type="text" name="surname" id="surname" required>
-							</p>
-					</form>
-					<!-- sign -->
-					<h2 id="signatureTitle">Signature :</h2>
-					<div id="canvas">
-							<canvas id="signature"></canvas>
+				</div>    
+
+				<!-- RESERVATION -->
+				<div id="reservationElt">
+
+					<!-- data entered by the user to book a bike -->
+					<div id="dataForBooking">
+
+						<h2>Réservation :</h2>
+
+						<div id="formAndSignature">
+
+							<!-- form -->
+							<form>
+								<p><label for="nom">Nom</label> : <input type="text" name="name" id="nameForm" required></input></p>
+								<p><label for="prénom">Prénom</label> : <input type="text" name="surname" id="surnameForm" required></input></p>
+								<input type="submit" id="reservationButton" value="Réserver mon velo"></input>
+							</form>
+							
+							<!-- signature -->
+							<div id="canvas">
+								<canvas id="signature"></canvas>
+								<button id="clearSignatureButton">Effacer</button>
+							</div>
+
+						</div>
+						
 					</div>
-				
-				<!-- TIMER -->
-					<div id="timer">
-							<button id="clearSignature">Effacer</button>
-							<button id="buttonReservation">Réserver</button>
-					</div>
+
+					<!-- Boutton to cancel the reservation of a bike -->
+					<button id="cancelReservationButton">Annuler la réservation</button>
+
 				</div>
-				
-				<!-- MAP -->
-				<div id="map"></div>
-			</div>
 
-			<!-- TEXT OF THE RESERVATION  -->
-			<div id="textReservation">
-				<p id="textTimer"></p>
-			</div>
-			
+			</div>    
+
+
+			<!-- MAP -->
+			<div id="map"></div>
+
+		</section>
+
+		<!-- THIRD SECTION -->
+		<section id="userReservationData">
+
+			<p id="detailsOfTheReservation"></p>
+
+			<p id ="countingDisplay"></p>
+
 		</section>
 
 		<!-- SCRIPT -->
+		<script src="./js/timer.js"></script>
+		<script src="./js/reservation.js"></script>
 		<script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js" integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA==" crossorigin=""></script>
 		<script src="./js/ajax.js"></script>	
 		<script src="./js/map.js"></script>
 		<script src="./js/signature.js"></script>
-		<script src="./js/timer.js"></script>
 		<script src="./js/slideshow.js"></script>
 		<script src="./js/main.js"></script>
 
-		</body>
+	</body>

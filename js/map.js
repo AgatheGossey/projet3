@@ -3,10 +3,11 @@ var map = {
     init: function(lat, lon) {
         this.map = L.map("map").setView([lat, lon], 14); // creation of the map
         L.tileLayer("https://korona.geog.uni-heidelberg.de/tiles/roads/x={x}&y={y}&z={z}", { // creating the image layer
-            maxZoom: 20,
+            maxZoom: 70,
         }).addTo(this.map);
         this.getStations();
-        this.button = document.getElementById("buttonReservation");
+        this.mainReservation = Object.create(reservation);
+        this.mainReservation.init("detailsAndReservation");
     },
 
     getStations: function() { // make an asynchronous HTTP request to the URL and executes the return function
@@ -21,22 +22,11 @@ var map = {
         }.bind(this));
     },
 
-    addListener: function(markerElt, marker) {
-        markerElt.addEventListener("click", function() { this.describeStation(marker) }.bind(this));
-    },
-
-    describeStation: function(station) {
-        var address = station.address; // recover the address of the station
-        var status = station.status; // recover the status of the station
-        var available_bikes = station.available_bikes; // recover the number of bikes available
-        var stateElt = document.getElementById("descriptionBikeStation");
-        stateElt.innerHTML = "</br> <span>Adresse : </span>" + address + "<br/>"
-                              + "<span>Etat de la station : </span>" + status + "<br/>" 
-                              + "<span> Nombre de vélo(s) disponible(s) : </span>" + available_bikes; // adding text on the site
-        if (status === "CLOSED" || available_bikes === 0 ) {
-            this.button.setAttribute("disabled", "true");
-        } else {
-            this.button.removeAttribute("disabled");
-        }
-    }
+        addListener: function(markerElt, marker) {
+            markerElt.addEventListener("click", function() {
+                this.mainReservation.describeStation(marker);
+                this.mainReservation.dataForBooking.style.display = "none";
+            }.bind(this));
+        },
+        
 };
