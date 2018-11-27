@@ -39,68 +39,82 @@
 			<!-- image that replaces the slideshow for smartphones -->
 			<img id="imgExplication" src="imgExplication.png" alt="Explication du fonctionnement de l'application"/>
 
-			<!-- slideshow container -->
-			<div id="slideshowContainer">
+			<!-- SLIDESHOW -->
+			<div id="slider">
 
-					<h1>Comment ça marche ?</h1>
+				<button class="buttonSlider prev fa fa-chevron-left"></button>
+				<img id="images" src="a.jpg" alt="Photo d'explication de l'application"/>
+				<button class="buttonSlider next fa fa-chevron-right"></button>
+			</div>
 
-				<div id="slider">
-					<button class="buttonSlider prev fa fa-chevron-left"></button>
-					<img id="images" src="a.jpg" alt="Photo d'explication de l'application"/>
-					<button class="buttonSlider next fa fa-chevron-right"></button>
-				</div>
-				
-				<div id="pause">
-					<button class="buttonSlider pause fa fa-pause"></button>
-				</div>
-
-			</div>	
-
+			<div id="pause">
+				<button class="buttonSlider pause fa fa-pause"></button>
+			</div>
+      
 		</section>
 
 		<!-- SECOND SECTION -->
-		<section id="mapSection">
+		<section id="detailsReservationAndMap">
 
-			<div id="mapContainer">
+			<!-- DETAILS OF THE STATION AND RESERVATION OF A BIKE -->
+			<div id="detailsAndReservation">
 
-				<div id=stateReservationTimer>
+				<!-- DETAILS -->
+				<div id="details">
 
-				<!-- STATE OF THE STATION -->
 					<h2>Détails de la station :</h2>
 					<p id="descriptionBikeStation"></p>
-					<div id="makeAReservation"></div>
+					<button id="makeAReservationButton">Faire une réservation</button>
 
-				<!-- RESERVATION -->	
-				<div id="reservation">	
+				</div>    
+        
+				<!-- RESERVATION -->
+				<div id="reservationElt">
 
-					<div id="signatureTitle"></div>
+					<!-- data entered by the user to book a bike -->
+					<div id="dataForBooking">
 
-				    <!-- form -->
-					<div id="form">
-						<!-- sign -->
-						<div id="canvas">
+						<h2>Réservation :</h2>
+
+						<div id="formAndSignature">
+
+							<!-- form -->
+							<form>
+								<p><label for="nom">Nom</label> : <input type="text" name="name" id="nameForm" required></input></p>
+								<p><label for="prénom">Prénom</label> : <input type="text" name="surname" id="surnameForm" required></input></p>
+								<input type="submit" id="reservationButton" value="Réserver mon velo"></input>
+							</form>
+							
+							<!-- signature -->
+							<div id="canvas">
 								<canvas id="signature"></canvas>
-						</div>
-					</div>	
-				
-				
-				<!-- TIMER -->
-					<div id="timer">
-							<div id="clearSignature"></div>
-							<div id="buttonReservation"></div>
-					</div>
-				</div>
-				</div>
-				
-				<!-- MAP -->
-				<div id="map"></div>
-			</div>
+								<button id="clearSignatureButton">Effacer</button>
+							</div>
 
-			<!-- TEXT OF THE RESERVATION  -->
-			<div id="textReservation">
-				<p id="textTimer"></p>
-			</div>
-			
+						</div>
+						
+					</div>
+
+					<!-- Boutton to cancel the reservation of a bike -->
+					<button id="cancelReservationButton">Annuler la réservation</button>
+
+				</div>
+
+			</div>    
+
+
+			<!-- MAP -->
+			<div id="map"></div>
+
+		</section>
+
+		<!-- THIRD SECTION -->
+		<section id="userReservationData">
+
+			<p id="detailsOfTheReservation"></p>
+
+			<p id ="countingDisplay"></p>
+
 		</section>
 
 		<!-- SCRIPT -->
@@ -113,4 +127,4 @@
 		<script src="./js/slideshow.js"></script>
 		<script src="./js/main.js"></script>
 
-		</body>
+	</body>

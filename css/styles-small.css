@@ -1,9 +1,36 @@
+/* GENERAL */
+
 body {
     margin: 0;
     border: 1px solid #ce8106;
     font-family: 'Ropa Sans', sans-serif;
     background-image: url("fond.jpg");
     background-attachment: fixed;
+}
+
+button {
+    margin: 0 10px;
+	padding:6px 9px;
+	width: 100px;
+    border: 1px solid white;
+    border-radius:2px;
+    box-shadow:2px 2px 5px #999;
+    font-size: 1.1em;
+    text-align: center;
+    background-color: black;
+    color: white;
+    cursor: pointer;  
+}
+
+button:hover {
+    background-color: #ce8106;
+}
+
+button:disabled {
+    border: none;
+    background-color: #2d2d2d;
+    color: #7a7a7a;
+    cursor: none;
 }
 
 /* HEADER */
@@ -40,8 +67,6 @@ header h1 {
     padding: 2em;
 }
 
-/* Slideshow */
-
 #slideshowContainer {
     display: none;
     margin: 3em 0;
@@ -49,32 +74,29 @@ header h1 {
 
 /* SECOND SECTION */
 
-#mapSection {
+#detailsReservationAndMap {
     background-color: black;
 }
 
-#mapContainer {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-}
-
-#stateReservationTimer {
+/* DETAILS OF THE STATION AND RESERVATION OF A BIKE */
+  
+#detailsAndReservation {
     width: 90%;
     border: 2px dashed white;
     margin: 1em auto;
     position: relative;
 }
 
-#stateReservationTimer h2, form {
+#detailsAndReservation h2 {
     margin: 0;
-    font-size: 1.2em;
-    background-color: white;
     padding: 0.5em;
+    background-color: white;
+    font-size: 1.2em;
     text-transform: uppercase;
 }
 
-/* State of the station */
+/* details */
+
 #descriptionBikeStation {
     margin: 0.5em;
     text-align: center;
@@ -83,103 +105,68 @@ header h1 {
     font-size: 1.4em;
 }
 
-/* Reservation */
-
-/* form */
-form {
-    margin: 1em;
-    background-color: black;
-    color: white;
-    text-align: center;
-    padding: 0;
-}
-
-/* signature */
-.signatureContainer {
-    position: absolute;
-    transform: translateX(-50%);
-    left: 50%;
-    width: 300px;
-    height: 140px;
-    border: 3px solid #ce8106;
-}
-
-#signatureTitle {
-    position: relative;
-    top: 20px;
-    padding-bottom: 1em;
-}
-
 #descriptionBikeStation span {
-    font-size: 1em;
     font-family: 'Dancing Script', cursive;
     font-weight: normal;
+    font-size: 1em;
 }
 
-#clearSignature {
-    position: relative;
-    text-align: center;
-    top: 8em;
-}
-/* timer */
-#timer {
-    text-align: center;
+#makeAReservationButton {
+    display: none;
 }
 
-#buttonReservation {
-    text-align: center;
+/* reservation */
+
+#reservationElt {
+    display: none;
 }
 
-button {
-    margin: 0 10px;
-	padding:6px 9px;
-	background-color: black;
-    color: white;
-    font-size: 1.1em;
-	border-radius:2px;
-	width: 100px;
-	border: 1px solid white;
-    box-shadow:2px 2px 5px #999;
-    cursor: pointer;  
-    text-align: center;
-}
+    /* form */
+    form {
+        margin: 1em;
+        background-color: black;
+        color: white;
+        text-align: center;
+        padding: 0;
+    }
 
-button:hover {
-    background-color: #ce8106;
-}
+    .reservationButton {
+        position: relative;
+        top: 15em;
+        text-align: center;
+    }
+    
+    /* signature */
+    #signature {
+        position: absolute;
+        transform: translateX(-50%);
+        left: 50%;
+        width: 300px;
+        height: 140px;
+        border: 3px solid #ce8106;
+    }
 
-button:disabled {
-    background-color: #2d2d2d;
-    color: #7a7a7a;
-    cursor: none;
-    border: none;
-}
+    #clearSignatureButton {
+        position: relative;
+        top: 8em;
+        text-align: center;
+    }
 
-/* #clearSignature {
-    position: relative;
-    top: 190px;
-} */
+    /* cancel the reservation */
 
-#test {
-    position: relative;
-    top: 20em;
-}
+    #cancelReservationButton {
+        display: none;
+    }
 
-/* map */
+/* MAP */
 #map {
     width: 95%;
     height: 400px;
     border: 10px solid white;
 }
 
-/* Text of the reservation */
-#textReservation {
-    background-color: #ce8106;
-}
+/* THIRD SECTION */
 
-#textTimer {
-    padding: 1em 0;
-    text-align: center;
-    font-size: 1.5em;
-    color: white;
+#userReservationData {
+    background-color: #ce8106;
 }

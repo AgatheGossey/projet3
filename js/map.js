@@ -3,11 +3,11 @@ var map = {
     init: function(lat, lon) {
         this.map = L.map("map").setView([lat, lon], 14); // creation of the map
         L.tileLayer("https://korona.geog.uni-heidelberg.de/tiles/roads/x={x}&y={y}&z={z}", { // creating the image layer
-            maxZoom: 20,
+            maxZoom: 70,
         }).addTo(this.map);
         this.getStations();
         this.mainReservation = Object.create(reservation);
-        this.mainReservation.init("stateReservationTimer");
+        this.mainReservation.init("detailsAndReservation");
     },
 
     getStations: function() { // make an asynchronous HTTP request to the URL and executes the return function
@@ -22,11 +22,11 @@ var map = {
         }.bind(this));
     },
 
-    addListener: function(markerElt, marker) {
-        markerElt.addEventListener("click", function() {
-            this.mainReservation.describeStation(marker)}
-            .bind(this));
-    },
-
-
+        addListener: function(markerElt, marker) {
+            markerElt.addEventListener("click", function() {
+                this.mainReservation.describeStation(marker);
+                this.mainReservation.dataForBooking.style.display = "none";
+            }.bind(this));
+        },
+        
 };
