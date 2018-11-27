@@ -7,7 +7,7 @@ var map = {
         }).addTo(this.map);
         this.getStations();
         this.mainReservation = Object.create(reservation);
-        this.mainReservation.init("stateReservationTimer");
+        this.mainReservation.init("detailsAndReservation");
     },
 
     getStations: function() { // make an asynchronous HTTP request to the URL and executes the return function
@@ -22,12 +22,11 @@ var map = {
         }.bind(this));
     },
 
-    addListener: function(markerElt, marker) {
-        markerElt.addEventListener("click", function() {
-            this.mainReservation.describeStation(marker);
-            this.mainReservation.reservationData.style.display = "none";
-        }.bind(this));
-    },
-
-
+        addListener: function(markerElt, marker) {
+            markerElt.addEventListener("click", function() {
+                this.mainReservation.describeStation(marker);
+                this.mainReservation.dataForBooking.style.display = "none";
+            }.bind(this));
+        },
+        
 };

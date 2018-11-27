@@ -3,7 +3,6 @@ var timer = {
     init: function(timerId, duration) {
         this.timer = document.getElementById(timerId);
         this.selectedDuration = duration;
-        this.clearSignature = document.getElementById("clearSignatureButton");
         this.counter = duration; // number of seconds in 20 minutes
         this.isStarted = false;
     },
