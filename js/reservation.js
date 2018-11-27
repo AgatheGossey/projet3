@@ -54,13 +54,14 @@ var reservation = {
 
     bookTheBike: function() {
         this.makeAReservationButton.style.display = "none";
-        this.reservationElt.style.display = "block";
+        this.reservationElt.style.display = "flex";
         this.dataForBooking.style.display = "block";
         this.mainSignature.init("signature");
         this.reservationButton.setAttribute("disabled", true);
     },
 
     checkTheForm: function(e) {
+        console.log("coucou");
         if (this.nameForm.value != "" && this.surnameForm.value !== "") {
             e.preventDefault(); // the default action that belongs to the event will not occur
             this.formatTheReservationElt();
@@ -69,21 +70,22 @@ var reservation = {
         }
     },
     
-        formatTheReservationElt: function() {
-            this.makeAReservationButton.setAttribute("disabled", true);
-            this.dataForBooking.style.display = "none";
-            this.cancelReservationButton.style.display = "block";
-        },
+    formatTheReservationElt: function() {
+        this.makeAReservationButton.setAttribute("disabled", true);
+        this.dataForBooking.style.display = "none";
+        this.cancelReservationButton.style.display = "block";
+    },
 
-        formatTheTimerElt: function() {
-            this.detailsOfTheReservation.innerHTML = "Vélo réservé à la station " + this.name 
-                                                    + " par " + this.surnameForm.value + " "+ this.nameForm.value;
-        },
+    formatTheTimerElt: function() {
+        this.detailsOfTheReservation.innerHTML = "Vélo réservé à la station <span>" + this.name +"</span>"
+                                                + " par <span>" + this.surnameForm.value + "</span> <span>"
+                                                + this.nameForm.value + "</span></br>";
+    },
 
-        startTheTimer: function() {
-            this.mainTimer.init("countingDisplay", 1200);
-            this.mainTimer.startTimer();
-        },
+    startTheTimer: function() {
+        this.mainTimer.init("countingDisplay", 1200);
+        this.mainTimer.startTimer();
+    },
 
     cancelTheReservation: function(e) {
         e.preventDefault(); 
@@ -91,17 +93,17 @@ var reservation = {
         this.formatTheCancellationOfTimerElt();
     },
 
-        formatTheCancellationElt: function() {
-            this.cancelReservationButton.style.display = "none";
-            this.makeAReservationButton.removeAttribute("disabled");
-            this.makeAReservationButton.style.display = "block";
-            this.reservationElt.style.display = "none";
-        },
+    formatTheCancellationElt: function() {
+        this.cancelReservationButton.style.display = "none";
+        this.makeAReservationButton.removeAttribute("disabled");
+        this.makeAReservationButton.style.display = "block";
+        this.reservationElt.style.display = "none";
+    },
 
-        formatTheCancellationOfTimerElt: function() {
-            this.mainTimer.resetTimer();
-            this.detailsOfTheReservation.textContent = "";
-        },
+    formatTheCancellationOfTimerElt: function() {
+        this.mainTimer.resetTimer();
+        this.detailsOfTheReservation.textContent = "";
+    },
 
 }
 

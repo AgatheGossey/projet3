@@ -40,15 +40,17 @@
 			<img id="imgExplication" src="imgExplication.png" alt="Explication du fonctionnement de l'application"/>
 
 			<!-- SLIDESHOW -->
-			<div id="slider">
+			<div id="slideshowContainer">
+				<div id="slider">
 
-				<button class="buttonSlider prev fa fa-chevron-left"></button>
-				<img id="images" src="a.jpg" alt="Photo d'explication de l'application"/>
-				<button class="buttonSlider next fa fa-chevron-right"></button>
-			</div>
+					<button class="buttonSlider prev fa fa-chevron-left"></button>
+					<img id="images" src="a.jpg" alt="Photo d'explication de l'application"/>
+					<button class="buttonSlider next fa fa-chevron-right"></button>
+				</div>
 
-			<div id="pause">
-				<button class="buttonSlider pause fa fa-pause"></button>
+				<div id="pause">
+					<button class="buttonSlider pause fa fa-pause"></button>
+				</div>
 			</div>
       
 		</section>
@@ -87,6 +89,7 @@
 							
 							<!-- signature -->
 							<div id="canvas">
+								<p>Signature :</p>
 								<canvas id="signature"></canvas>
 								<button id="clearSignatureButton">Effacer</button>
 							</div>

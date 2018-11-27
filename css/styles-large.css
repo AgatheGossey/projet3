@@ -18,21 +18,60 @@
     
     /* SECOND SECTION */
 
-    #mapContainer {
+    #reservationElt {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 0;
+    }
+
+    #dataForBooking {
+        width: 100%;
+    }
+
+    #detailsReservationAndMap {
         display: flex;
         flex-direction: row;
     }
 
-    #stateReservationTimer {
-        width: 25%;
-        margin: 1.5em;
+    #detailsAndReservation {
+        width: 40%;
+        margin: 1em;
+        border: 2px dashed white;
     }
+
+    #detailsAndReservation h2 {
+        width: 100%;
+        padding: 0.5em 0 0.5em 1em;
+        box-sizing: border-box;
+    }
+
+    #signature {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        transform: none;
+        left: 0%;
+        margin: auto;
+   }
+
+   #clearSignatureButton {
+       top: 0%;
+       bottom: 2em;
+   }
 
     /* map */
     #map {
-        width: 75%;
+        width: 60%;
         height: 600px;
         margin: 2em;
         border: 10px solid white;
     }
-}
+
+    /* THIRD SECTION */
+
+    #userReservationData {
+        font-size: 1.5em;
+    }
+

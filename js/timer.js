@@ -5,6 +5,7 @@ var timer = {
         this.selectedDuration = duration;
         this.counter = duration; // number of seconds in 20 minutes
         this.isStarted = false;
+        this.countingDisplay = document.getElementById("countingDisplay");
     },
     
     startTimer: function () {
@@ -26,13 +27,13 @@ var timer = {
     formatTimer: function() {
         this.minutes = Math.trunc(this.counter / 60); // Math.trunc : the number is rounded to the nearest integer to zero // Calculate the number of minutes based on the number of seconds remaining
         this.seconds = this.counter % 60; // % : modulus operator who returns the division remainder
-        this.timer.innerHTML = "Temps restant : " + this.minutes + "min et " + this.seconds +"s"; 
+        this.timer.innerHTML = "Temps restant : <span>" + this.minutes + "min et " + this.seconds +"s</span>"; 
     },
 
     resetTimer: function() { // reactive the reservation button and restrarts the counter
         this.counter = this.selectedDuration;
         clearInterval(this.intervalId);
-        this.timer.textContent = "";
+        this.countingDisplay.textContent = "";
     }
     };
     

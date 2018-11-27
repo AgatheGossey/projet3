@@ -7,7 +7,7 @@ var map = {
         }).addTo(this.map);
         this.getStations();
         this.mainReservation = Object.create(reservation);
-        this.mainReservation.init("detailsAndReservation");
+        this.mainReservation.init("reservation");
     },
 
     getStations: function() { // make an asynchronous HTTP request to the URL and executes the return function
