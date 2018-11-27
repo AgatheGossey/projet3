@@ -7,7 +7,7 @@ var canvas = {
         this.ctx.lineWidth = 1; // the width of the lines used for strokes
         this.ctx.strokeStyle = "white";
         this.sign = false;
-        this.clearSignatureButton = document.getElementById("clearSignature");
+        this.clearSignatureButton = document.getElementById("clearSignatureButton");
         this.mousePosition = { 
             x:0,
             y:0
@@ -32,6 +32,12 @@ var canvas = {
 
     // Clear the signature
     this.clearSignatureButton.addEventListener("click", this.clearSignature.bind(this));
+
+
+    // Prevent scrolling when touching the canvas
+    document.body.addEventListener("touchstart", this.preventScrolling.bind(this));
+    document.body.addEventListener("touchend", this.preventScrolling.bind(this));
+    document.body.addEventListener("touchmove", this.preventScrolling.bind(this));
 
     },
 
@@ -112,6 +118,14 @@ var canvas = {
             window.requestAnimationFrame(this.signLoop);
             this.renderCanvas();  
         }
+    },
+
+    // PREVENT SCROLLING
+
+    preventScrolling: function(e) {
+        if (e.target == this.signatureId) {
+            e.preventDefault();
+            }
     },
 
 };

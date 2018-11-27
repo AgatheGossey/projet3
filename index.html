@@ -49,54 +49,63 @@
 		</section>
 
 		<!-- SECOND SECTION -->
-		<section id="mapSection">
+		<section id="detailsReservationAndMap">
 
-			<div id="mapContainer">
+			<!-- details of the chosen station and booking a bike -->
+			<div id="detailsAndReservation">
 
-				<div id=stateReservationTimer>
+				<div id="details">
 
-					<!-- STATE OF THE STATION -->
 					<h2>Détails de la station :</h2>
 					<p id="descriptionBikeStation"></p>
-					<button id="makeAReservation">Faire une réservation</button>
+					<button id="makeAReservationButton">Faire une réservation</button>
 
-					<!-- RESERVATION -->	
-					<div id="reservation">
-						<div id="test">
+				</div>    
 
-							<h2 id="reservationTitle">Réservation :</h2>
+				<div id="reservation">
+
+					<!-- data entered by the user to book a bike -->
+					<div id="dataForBooking">
+
+						<h2>Réservation :</h2>
+
+						<div id="formAndSignature">
 
 							<!-- form -->
-							<div id="form">
-								<form>
-									<p><label for="nom">Nom</label> : <input type="text" name="name" id="nameForm" required onsubmit="return verifPseudo()"></input></p>
-									<p><label for="prénom">Prénom</label> : <input type="text" name="surname" id="surnameForm" required></input></p>
-									<input type="submit" id="bookingButton" value="Réserver mon velo"></input>
-								</form>
-								<!-- sign -->
-								<div id="canvas">
-									<canvas id="signature"></canvas>
-									<button id="clearSignature">Effacer</button>
-								</div>
+							<form>
+								<p><label for="nom">Nom</label> : <input type="text" name="name" id="nameForm" required></input></p>
+								<p><label for="prénom">Prénom</label> : <input type="text" name="surname" id="surnameForm" required></input></p>
+								<input type="submit" id="reservationButton" value="Réserver mon velo"></input>
+							</form>
+							
+							<!-- signature -->
+							<div id="canvas">
+								<canvas id="signature"></canvas>
+								<button id="clearSignatureButton">Effacer</button>
 							</div>
+
 						</div>
-						<button id="cancelBooking">Annuler la réservation</button>
-						<!-- TIMER -->
-						<div id="timer"></div>
+						
 					</div>
+
+					<!-- Boutton to cancel the reservation of a bike -->
+					<button id="cancelBookingButton">Annuler la réservation</button>
 
 				</div>
 
-				<!-- MAP -->
-				<div id="map"></div>
+			</div>    
 
-			</div>
+			<!-- interactive map display -->
+			<div id="map"></div>
 
-			<!-- TEXT OF THE RESERVATION  -->
-			<div id="textReservation">
-				<p id="textTimer"></p>
-			</div>
-			
+		</section>
+
+		<!-- THIRD SECTION -->
+		<section id="userReservationData">
+
+			<p id="detailsOfTheReservation"></p>
+			<p id ="countingDisplay"></p>
+
 		</section>
 
 		<!-- SCRIPT -->

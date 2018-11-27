@@ -25,7 +25,7 @@ var map = {
     addListener: function(markerElt, marker) {
         markerElt.addEventListener("click", function() {
             this.mainReservation.describeStation(marker);
-            this.mainReservation.reservation.style.display = "none";
+            this.mainReservation.reservationData.style.display = "none";
         }.bind(this));
     },
 

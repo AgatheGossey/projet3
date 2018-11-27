@@ -52,22 +52,20 @@ header h1 {
 
 /* SECOND SECTION */
 
-#mapSection {
-    background-color: black;
-}
-#mapContainer {
+#detailsReservationAndMap {
     display: flex;
     position: relative;
+    background-color: black;
 }
 
-#stateReservationTimer {
+#detailsAndReservation {
     width: 25%;
     border: 2px dashed white;
     margin: 1.5em;
     position: relative;
 }
 
-#stateReservationTimer h2, form {
+#detailsAndReservation h2, form {
     margin: 0;
     font-size: 1.2em;
     background-color: white;
@@ -84,7 +82,7 @@ header h1 {
     font-size: 1.4em;
 }
 
-#makeAReservation {
+#makeAReservationButton {
     display: none;
 }
 
@@ -124,7 +122,7 @@ form {
     font-weight: normal;
 }
 
-#clearSignature {
+#clearSignatureButton {
     position: relative;
     text-align: center;
     top: 8em;
@@ -134,13 +132,13 @@ form {
     text-align: center;
 }
 
-.bookingButton {
+.reservationButton {
     position: relative;
     top: 15em;
     text-align: center;
 }
 
-#cancelBooking {
+#cancelBookingButton {
     display: none;
 }
 button {
@@ -168,12 +166,6 @@ button:disabled {
     border: none;
 }
 
-/* #clearSignature {
-    position: relative;
-    top: 190px;
-} */
-
-
 /* map */
 #map {
     width: 75%;
@@ -183,7 +175,7 @@ button:disabled {
 }
 
 /* Text of the reservation */
-#textReservation {
+#userReservationData {
     background-color: #ce8106;
 }
 
