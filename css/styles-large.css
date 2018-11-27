@@ -15,5 +15,24 @@
         height: 50px;
         font-size: 1em;
     }
+    
+    /* SECOND SECTION */
 
+    #mapContainer {
+        display: flex;
+        flex-direction: row;
+    }
+
+    #stateReservationTimer {
+        width: 25%;
+        margin: 1.5em;
+    }
+
+    /* map */
+    #map {
+        width: 75%;
+        height: 600px;
+        margin: 2em;
+        border: 10px solid white;
+    }
 }
