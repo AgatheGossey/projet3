@@ -1,5 +1,15 @@
 @media all and (min-width: 1200px) {
 
+    .next.fa.fa-chevron-right {
+        border-radius: 0px 10px 10px 0px;  
+        right: -40px;
+    }
+
+    .prev.fa.fa-chevron-left {
+        border-radius: 10px 0px 0px 10px;
+        left: -40px;
+    }
+
     #detailsAndReservation {
         width: 30%;
     }

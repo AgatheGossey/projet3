@@ -31,17 +31,21 @@
     }
 
     #slider {
+        position: relative;
         display: flex;
         align-items: center;
+        max-width: 90%;
+        margin: auto;
     }
 
     #images {
-        width: 100vw;
+        width: calc(100% - 25px);
         border: 10px solid white;
         box-shadow: 0px 0px 5px 2px #ccc;
     }
 
     .buttonSlider {   
+        position: absolute;
         padding: 12px;
         border: none;
         background: grey;
@@ -58,17 +62,21 @@
 
     .next.fa.fa-chevron-right {
         border-radius: 0px 10px 10px 0px;  
+        right: -20px;
     }
 
     .prev.fa.fa-chevron-left {
         border-radius: 10px 0px 0px 10px;
+        left: -25px;
     }
 
     #pause {
         text-align: center;
+
     }
 
     .pause.fa.fa-pause {
+        margin: 0;
         border-radius: 10px;
     }
 

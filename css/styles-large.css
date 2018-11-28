@@ -1,19 +1,24 @@
 @media all and (min-width: 992px) {
 
     /* FIRST SECTION */
-    #slider {
-        max-width: 90%;
-        margin: auto;
-    }
+
 
     #images {
-        width: 100%;
+        width: calc(100% - 20px);
     }
 
     .buttonSlider {  
         padding: 20px;
         height: 50px;
         font-size: 1em;
+    }
+
+    .next.fa.fa-chevron-right {
+        right: -35px;
+    }
+
+    .prev.fa.fa-chevron-left {
+        left: -35px;
     }
     
     /* SECOND SECTION */
