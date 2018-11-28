@@ -90,8 +90,13 @@ header h1 {
 
 /* details */
 
-#descriptionBikeStation {
+#detailsTitle {
+    display: none;
+}
+
+#descriptionBikeStation, #introduction {
     margin: 1em;
+    padding-top: 1em;
     text-align: center;
     color: white;
     font-weight: bold;
@@ -142,7 +147,7 @@ header h1 {
 
     #reservationButton {
         position: relative;
-        top: 320%;
+        top: 14em;
         font-weight: bold;
         font-size: 0.7em;
         text-transform: uppercase;

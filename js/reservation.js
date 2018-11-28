@@ -3,6 +3,8 @@ var reservation = {
     init : function(reservationId) {
         this.reservation = document.getElementById(reservationId);
         this.reservationElt = document.getElementById("reservationElt");
+        this.introduction = document.getElementById("introduction");
+        this.detailsTitle = document.getElementById("detailsTitle");
         this.descriptionBikeStation = document.getElementById("descriptionBikeStation");
         this.makeAReservationButton = document.getElementById("makeAReservationButton");
         this.clearSignatureButton = document.getElementById("clearSignatureButton");
@@ -14,6 +16,8 @@ var reservation = {
         this.nameForm = document.getElementById("nameForm");
         this.surnameForm = document.getElementById("surnameForm");
         this.dataForBooking = document.getElementById("dataForBooking");
+        this.countingDisplay = document.getElementById("countingDisplay");
+        this.userReservationData = document.getElementById("userReservationData");
         this.mainSignature = Object.create(canvas);
         this.mainTimer = Object.create(timer);
         this.addListeners();
@@ -21,21 +25,15 @@ var reservation = {
 
     addListeners: function() {
         this.makeAReservationButton.addEventListener("click", this.bookTheBike.bind(this));
-        this.signature.addEventListener("click", function() { this.reservationButton.removeAttribute('disabled') }.bind(this));
+        this.signature.addEventListener("click", function() { this.reservationButton.removeAttribute('disabled') }.bind(this)); // reactive the reservation button to be sure that the user has signed
         this.clearSignatureButton.addEventListener("click", function () { this.reservationButton.setAttribute("disabled", true) }.bind(this));
         this.reservationButton.addEventListener("click", this.checkTheForm.bind(this));
         this.cancelReservationButton.addEventListener("click", this.cancelTheReservation.bind(this));
-
-        // this.reservationButton.addEventListener("click", function() {
-        //     localStorage.setItem("this.name", this.name);
-        //     // localStorage.setItem("this.name", this.nameForm.value);
-        //     // localStorage.setItem("this.name", this.nameForm.value);
-        //     // localStorage.setItem("this.name", this.nameForm.value);
-        //     alert("Le texte est sauvegardé.");
-        //   });
     },
 
     describeStation: function(station) {
+        this.introduction.style.display ="none";
+        this.detailsTitle.style.display = "block";
         this.name = station.name; // recover the name of the station 
         this.address = station.address; // recover the address of the station
         this.status = station.status; // recover the status of the station
@@ -44,10 +42,10 @@ var reservation = {
                         + "<span>Adresse : </span>" + this.address + "<br/>"
                         + "<span>Etat de la station : </span>" + this.status + "<br/>" 
                         + "<span> Nombre de vélo(s) disponible(s) : </span>" + this.available_bikes +"<br/>"  // adding text on the site
-        if (this.status === "OPEN" && this.available_bikes !== 0 ) {
-            this.makeAReservationButton.style.display = "block";
-        } else if (this.available_bikes === 0) {
-            this.makeAReservationButton.style.display = "none";
+        if (this.status === "OPEN" && this.available_bikes !== 0 ) { 
+            this.makeAReservationButton.style.display = "block"; // if the station is open and bicycles are available, the button "make a reservation" appears
+        } else if (this.status === "CLOSED" || this.available_bikes === 0) {
+            this.makeAReservationButton.style.display = "none"; // else the button does not appear
             this.init();
         }
     },
@@ -57,12 +55,11 @@ var reservation = {
         this.reservationElt.style.display = "flex";
         this.dataForBooking.style.display = "block";
         this.mainSignature.init("signature");
-        this.reservationButton.setAttribute("disabled", true);
+        this.reservationButton.setAttribute("disabled", true); // deactivate the reservation button 
     },
 
     checkTheForm: function(e) {
-        console.log("coucou");
-        if (this.nameForm.value != "" && this.surnameForm.value !== "") {
+        if (this.nameForm.value != "" && this.surnameForm.value !== "") {  // if the elements of the form are completed
             e.preventDefault(); // the default action that belongs to the event will not occur
             this.formatTheReservationElt();
             this.formatTheTimerElt();
@@ -74,12 +71,18 @@ var reservation = {
         this.makeAReservationButton.setAttribute("disabled", true);
         this.dataForBooking.style.display = "none";
         this.cancelReservationButton.style.display = "block";
+        this.mainSignature.clearSignature();
     },
 
     formatTheTimerElt: function() {
         this.detailsOfTheReservation.innerHTML = "Vélo réservé à la station <span>" + this.name +"</span>"
                                                 + " par <span>" + this.surnameForm.value + "</span> <span>"
                                                 + this.nameForm.value + "</span></br>";
+        this.scrollToBottom(); // scrolls the specified element into the visible area of window
+    },
+
+    scrollToBottom: function() {
+        this.userReservationData.scrollIntoView(false);
     },
 
     startTheTimer: function() {
@@ -103,6 +106,7 @@ var reservation = {
     formatTheCancellationOfTimerElt: function() {
         this.mainTimer.resetTimer();
         this.detailsOfTheReservation.textContent = "";
+        this.countingDisplay.textContent = "";
     },
 
 }

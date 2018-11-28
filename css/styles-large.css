@@ -18,17 +18,6 @@
     
     /* SECOND SECTION */
 
-    #reservationElt {
-        display: none;
-        flex-direction: column;
-        align-items: center;
-        margin-bottom: 0;
-    }
-
-    #dataForBooking {
-        width: 100%;
-    }
-
     #detailsReservationAndMap {
         display: flex;
         flex-direction: row;
@@ -44,6 +33,23 @@
         width: 100%;
         padding: 0.5em 0 0.5em 1em;
         box-sizing: border-box;
+    }
+
+    /* details */
+    #descriptionBikeStation {
+        padding-top: 0;
+    }
+
+    /* reservation */
+    #reservationElt {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 0;
+    }
+
+    #dataForBooking {
+        width: 100%;
     }
 
     #signature {
