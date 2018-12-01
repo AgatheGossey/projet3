@@ -59,8 +59,8 @@ var canvas = {
     getMousePosition: function(canvasDom, mouseEvent) {
         var rect = canvasDom.getBoundingClientRect(); //method which sends the size and the position of the canvas relative to viewport
         return {
-          x: mouseEvent.clientX - rect.left, // x position of the mouse relative to the canvas // calculates the difference between the mouse coordinates and the left side of the viewport
-          y: mouseEvent.clientY - rect.top // y position within the canvas
+          x: mouseEvent.clientX - rect.left, // calculates the difference between the mouse coordinates and the left side of the viewport
+          y: mouseEvent.clientY - rect.top // 
         };
     },
 

@@ -13,7 +13,7 @@ var slider = {
 		document.querySelector(".prev").addEventListener("click", this.prevImage.bind(this));
 		document.getElementById("images").addEventListener("click", this.nextImage.bind(this));
 		document.querySelector(".pause").addEventListener("click", this.stopSlider.bind(this));
-		document.addEventListener("keypress", this.keyPress.bind(this));
+		document.addEventListener("keydown", this.keyPress.bind(this));
 	},
 
 	startSlider: function () {
