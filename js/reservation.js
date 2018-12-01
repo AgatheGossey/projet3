@@ -50,6 +50,9 @@ var reservation = {
     },
 
     bookTheBike: function() {
+        // returns the value associated with the key passed as a parameter
+        this.nameForm.value = localStorage.getItem('name');
+        this.surnameForm.value = localStorage.getItem('surname');
         this.makeAReservationButton.style.display = "none";
         this.reservationElt.style.display = "flex";
         this.dataForBooking.style.display = "block";
@@ -63,6 +66,10 @@ var reservation = {
             this.formatTheReservationElt();
             this.formatTheTimerElt();
             this.startTheTimer();
+            // adds to the local storage
+            localStorage.setItem('name', this.nameForm.value);
+            localStorage.setItem('surname', this.surnameForm.value);
+ 
         }
     },
     
