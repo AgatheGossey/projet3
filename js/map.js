@@ -22,11 +22,10 @@ var map = {
         }.bind(this));
     },
 
-        addListener: function(markerElt, marker) {
-            markerElt.addEventListener("click", function() {
-                this.mainReservation.describeStation(marker);
-                this.mainReservation.dataForBooking.style.display = "none";
-            }.bind(this));
-        },
-        
+    addListener: function(markerElt, marker) {
+        markerElt.addEventListener("click", function() {
+            this.mainReservation.describeStation(marker);
+            this.mainReservation.dataForBooking.style.display = "none";
+        }.bind(this));
+    },
 };
