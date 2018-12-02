@@ -1,7 +1,7 @@
 var slider = {
 
 	init: function(sliderId) {
-		this.image = ["a", "b", "c"];
+		this.image = ["a", "b", "c", "d"];
 		this.currentImage = 1;
 		this.slideshow = document.getElementById(sliderId);
 		this.addListeners();
