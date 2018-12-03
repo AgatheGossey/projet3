@@ -27,7 +27,7 @@
 
     #slideshowContainer {
         display: block;
-        margin: 3em 0;
+        margin: 7em 0;
     }
 
     #slider {
@@ -71,8 +71,8 @@
     }
 
     #pause {
+        width: 100%;
         text-align: center;
-
     }
 
     .pause.fa.fa-pause {
@@ -83,7 +83,7 @@
     /* SECOND SECTION */
 
     #map {
-        margin: auto;
+        margin: 0 auto;
         width: 90%;
     }
 

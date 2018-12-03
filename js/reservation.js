@@ -12,7 +12,6 @@ var reservation = {
         this.signature = document.getElementById("signature");
         this.cancelReservationButton = document.getElementById("cancelReservationButton");
         this.detailsOfTheReservation = document.getElementById("detailsOfTheReservation");
-        this.form = document.querySelector("form");
         this.nameForm = document.getElementById("nameForm");
         this.surnameForm = document.getElementById("surnameForm");
         this.dataForBooking = document.getElementById("dataForBooking");
@@ -26,6 +25,7 @@ var reservation = {
     addListeners: function() {
         this.makeAReservationButton.addEventListener("click", this.bookTheBike.bind(this));
         this.signature.addEventListener("click", function() { this.reservationButton.removeAttribute('disabled') }.bind(this)); // reactive the reservation button to be sure that the user has signed
+        this.signature.addEventListener("touchmove", function() { this.reservationButton.removeAttribute('disabled') }.bind(this));
         this.clearSignatureButton.addEventListener("click", function () { this.reservationButton.setAttribute("disabled", true) }.bind(this));
         this.reservationButton.addEventListener("click", this.checkTheForm.bind(this));
         this.cancelReservationButton.addEventListener("click", this.cancelTheReservation.bind(this));
@@ -40,13 +40,12 @@ var reservation = {
         this.available_bikes = station.available_bikes; // recover the number of bikes available
         this.descriptionBikeStation.innerHTML = this.name + "</br>"
                         + "<span>Adresse : </span>" + this.address + "<br/>"
-                        + "<span>Etat de la station : </span>" + this.status + "<br/>" 
+                        + "<span>Etat : </span>" + this.status + "<br/>" 
                         + "<span> Nombre de vélo(s) disponible(s) : </span>" + this.available_bikes +"<br/>"  // adding text on the site
         if (this.status === "OPEN" && this.available_bikes !== 0 ) { 
             this.makeAReservationButton.style.display = "block"; // if the station is open and bicycles are available, the button "make a reservation" appears
         } else if (this.status === "CLOSED" || this.available_bikes === 0) {
             this.makeAReservationButton.style.display = "none"; // else the button does not appear
-            this.init();
         }
     },
 
@@ -99,8 +98,10 @@ var reservation = {
     formatTheCancellationElt: function() {
         this.cancelReservationButton.style.display = "none";
         this.makeAReservationButton.removeAttribute("disabled");
-        this.makeAReservationButton.style.display = "block";
         this.reservationElt.style.display = "none";
+        if (this.status === "OPEN" && this.available_bikes !== 0 ) {
+            this.makeAReservationButton.style.display = "block";
+        }
     },
 
     formatTheCancellationOfTimerElt: function() {
