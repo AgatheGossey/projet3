@@ -23,10 +23,7 @@ var map = {
     },
 
     addListener: function(markerElt, marker) {
-<<<<<<< HEAD
         // this.map.removeLayer(L.marker([marker.position.lat, marker.position.lng]))
-=======
->>>>>>> f12a1b63ec48af9b54d89f4d685414cca8d3d9dc
         markerElt.addEventListener("click", function() {
             this.mainReservation.describeStation(marker);
             this.mainReservation.dataForBooking.style.display = "none";
