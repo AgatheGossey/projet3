@@ -15,7 +15,7 @@ var reservation = {
         this.nameForm = document.getElementById("nameForm");
         this.surnameForm = document.getElementById("surnameForm");
         this.dataForBooking = document.getElementById("dataForBooking");
-        this.countingDisplay = document.getElementById("countingDisplay");
+        this.compteurElt = document.getElementById("compteurElt");
         this.userReservationData = document.getElementById("userReservationData");
         this.mainSignature = Object.create(canvas);
         this.mainTimer = Object.create(timer);
@@ -60,8 +60,9 @@ var reservation = {
     checkTheForm: function(e) {
         if (this.nameForm.value != "" && this.surnameForm.value !== "") {  // if the elements of the form are completed
             e.preventDefault(); // the default action that belongs to the event will not occur
+            this.formatThe
             this.formatTheReservationElt();
-            this.formatTheTimerElt();
+            this.formatTheUserData();
             this.startTheTimer();
         }
     },
@@ -73,19 +74,15 @@ var reservation = {
         this.mainSignature.clearSignature();
     },
 
-    formatTheTimerElt: function() {
+    formatTheUserData: function() {
         this.detailsOfTheReservation.innerHTML = "Vélo réservé à la station <span>" + this.name +"</span>"
                                                 + " par <span>" + this.surnameForm.value + "</span> <span>"
                                                 + this.nameForm.value + "</span></br>";
-        this.scrollToBottom(); // scrolls the specified element into the visible area of window
-    },
-
-    scrollToBottom: function() {
-        this.userReservationData.scrollIntoView(false);
+        this.userReservationData.scrollIntoView(false); // scrolls the specified element into the visible area of window
     },
 
     startTheTimer: function() {
-        this.mainTimer.init("countingDisplay", 1200);
+        this.mainTimer.init("compteurElt", 1200);
         this.mainTimer.startTimer();
     },
 
@@ -107,7 +104,7 @@ var reservation = {
     formatTheCancellationOfTimerElt: function() {
         this.mainTimer.resetTimer();
         this.detailsOfTheReservation.textContent = "";
-        this.countingDisplay.textContent = "";
+        this.compteurElt.textContent = "";
     },
 
 }
