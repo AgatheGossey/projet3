@@ -4,7 +4,12 @@ var timer = {
         this.timer = document.getElementById(timerId);
         this.selectedDuration = duration;
         this.counter = duration; // number of seconds in 20 minutes
+<<<<<<< HEAD
+        this.isStarted = false;
+        this.compteurElt = document.getElementById("compteurElt");
+=======
         this.countingDisplay = document.getElementById("countingDisplay");
+>>>>>>> f12a1b63ec48af9b54d89f4d685414cca8d3d9dc
     },
     
     startTimer: function () {

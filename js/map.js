@@ -17,12 +17,13 @@ var map = {
     setMarkersPosition: function(markers) {
         markers = JSON.parse(markers); // turn the response into a JavaScript objects
         markers.forEach(function(marker) {
-            var markerElt = L.marker([marker.position.lat, marker.position.lng]).addTo(this.map); // adding markers on the map
+            var markerElt = this.map.addLayer(L.marker([marker.position.lat, marker.position.lng])); // adding markers on the map
             this.addListener(markerElt, marker); // adding the description of the status of the station
         }.bind(this));
     },
 
     addListener: function(markerElt, marker) {
+        // this.map.removeLayer(L.marker([marker.position.lat, marker.position.lng]))
         markerElt.addEventListener("click", function() {
             this.mainReservation.describeStation(marker);
             this.mainReservation.dataForBooking.style.display = "none";
