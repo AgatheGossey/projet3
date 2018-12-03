@@ -4,6 +4,7 @@ var reservation = {
         this.reservation = document.getElementById(reservationId);
         this.reservationElt = document.getElementById("reservationElt");
         this.introduction = document.getElementById("introduction");
+        this.details = document.getElementById("details");
         this.detailsTitle = document.getElementById("detailsTitle");
         this.descriptionBikeStation = document.getElementById("descriptionBikeStation");
         this.makeAReservationButton = document.getElementById("makeAReservationButton");
@@ -32,6 +33,7 @@ var reservation = {
     },
 
     describeStation: function(station) {
+        this.details.style.display = "block";
         this.introduction.style.display ="none";
         this.detailsTitle.style.display = "block";
         this.name = station.name; // recover the name of the station 
@@ -50,6 +52,9 @@ var reservation = {
     },
 
     bookTheBike: function() {
+        // returns the value associated with the key passed as a parameter
+        this.nameForm.value = localStorage.getItem('name');
+        this.surnameForm.value = localStorage.getItem('surname');
         this.makeAReservationButton.style.display = "none";
         this.reservationElt.style.display = "flex";
         this.dataForBooking.style.display = "block";
@@ -60,9 +65,16 @@ var reservation = {
     checkTheForm: function(e) {
         if (this.nameForm.value != "" && this.surnameForm.value !== "") {  // if the elements of the form are completed
             e.preventDefault(); // the default action that belongs to the event will not occur
+            this.startDate = new Date(); // save the date of the reservation to use if the user closes the page
             this.formatTheReservationElt();
             this.formatTheTimerElt();
             this.startTheTimer();
+            // adds to the local storage
+            localStorage.setItem('name', this.nameForm.value);
+            localStorage.setItem('surname', this.surnameForm.value);
+            // adds to the session storage
+            sessionStorage.setItem('stationName', this.name);
+            sessionStorage.setItem('startDate', this.startDate);
         }
     },
     
@@ -90,13 +102,17 @@ var reservation = {
     },
 
     cancelTheReservation: function(e) {
-        e.preventDefault(); 
+        e.preventDefault();
+        sessionStorage.clear();
         this.formatTheCancellationElt();
         this.formatTheCancellationOfTimerElt();
     },
 
     formatTheCancellationElt: function() {
+        this.details.style.display = "none";
         this.cancelReservationButton.style.display = "none";
+        this.introduction.innerText = "Cliquez sur une station pour obtenir des détails sur celle ci et réserver votre vélo.";
+        this.introduction.style.display ="block";
         this.makeAReservationButton.removeAttribute("disabled");
         this.reservationElt.style.display = "none";
         if (this.status === "OPEN" && this.available_bikes !== 0 ) {
