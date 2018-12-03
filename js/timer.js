@@ -4,12 +4,15 @@ var timer = {
         this.timer = document.getElementById(timerId);
         this.selectedDuration = duration;
         this.counter = duration; // number of seconds in 20 minutes
+<<<<<<< HEAD
         this.isStarted = false;
         this.compteurElt = document.getElementById("compteurElt");
+=======
+        this.countingDisplay = document.getElementById("countingDisplay");
+>>>>>>> f12a1b63ec48af9b54d89f4d685414cca8d3d9dc
     },
     
     startTimer: function () {
-        this.isStarted = true;
         this.intervalId = setInterval(this.decreaseTimer.bind(this), 1000); // call the "decreaseTimer" function repeatedly, with a delay set at 1000 milliseconds
     },
     
