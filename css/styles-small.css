@@ -97,7 +97,7 @@ header h1 {
     display: none;
 }
 
-#descriptionBikeStation, #introduction {
+#stationDetails, #introduction {
     margin: 1em;
     padding-top: 1em;
     text-align: center;
@@ -106,7 +106,7 @@ header h1 {
     font-size: 1.4em;
 }
 
-#descriptionBikeStation span {
+#stationDetails span {
     font-family: 'Dancing Script', cursive;
     font-weight: normal;
     font-size: 1em;

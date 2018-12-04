@@ -4,12 +4,7 @@ var timer = {
         this.timer = document.getElementById(timerId);
         this.selectedDuration = duration;
         this.counter = duration; // number of seconds in 20 minutes
-<<<<<<< HEAD
-        this.isStarted = false;
-        this.compteurElt = document.getElementById("compteurElt");
-=======
-        this.countingDisplay = document.getElementById("countingDisplay");
->>>>>>> f12a1b63ec48af9b54d89f4d685414cca8d3d9dc
+        this.counterElt = document.getElementById("counterElt");
     },
     
     startTimer: function () {
@@ -31,7 +26,7 @@ var timer = {
         // // Convert our remaining seconds in minutes + seconds
         this.minutes = Math.trunc(this.counter / 60); // Math.trunc : the number is rounded to the nearest integer to zero // Calculate the number of minutes based on the number of seconds remaining
         this.seconds = this.counter % 60; // % : modulus operator who returns the division remainder
-        this.timer.innerHTML = " <i class='far fa-clock'></i>   Temps restant : <span>" + this.minutes + "min et " + this.seconds +"s</span>"; 
+        this.counterElt.innerHTML = " <i class='far fa-clock'></i>   Temps restant : <span>" + this.minutes + "min et " + this.seconds +"s</span>"; 
     },
 
     resetTimer: function() { // restrarts the counter

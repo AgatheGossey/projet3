@@ -32,7 +32,7 @@ function init() {
 
             mainReservation.name = stationName;
             
-            mainReservation.formatTheTimerElt();
+            mainReservation.formatTheUserData();
             mainReservation.formatTheReservationElt();
             mainReservation.mainTimer.startTimer();
         } 
