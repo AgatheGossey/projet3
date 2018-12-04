@@ -60,8 +60,12 @@ var reservation = {
         this.name = station.name; 
         this.address = station.address; 
         this.status = station.status; 
-        this.available_bikes = station.available_bikes; 
-
+        if (sessionStorage.getItem("stationName") === this.name) {
+            this.availableBikes = station.available_bikes - 1; // if there is a reservation in progress for the station, there is 1 bike less available
+        } else {
+            this.availableBikes = station.available_bikes;
+        };
+        
         // layout of the element
         this.introduction.style.display ="none"; 
         this.details.style.display = "block";
@@ -69,13 +73,13 @@ var reservation = {
         this.stationDetails.innerHTML = this.name + "</br>"
                         + "<span>Adresse : </span>" + this.address + "<br/>"
                         + "<span>Etat : </span>" + this.status + "<br/>" 
-                        + "<span> Nombre de vélo(s) disponible(s) : </span>" + this.available_bikes +"<br/>";
-
-                        if (this.status === "OPEN" && this.available_bikes !== 0 ) { 
-                            this.makeAReservationButton.style.display = "block"; // if the station is open and bicycles are available, the button "make a reservation" appears
-                        } else if (this.status === "CLOSED" || this.available_bikes === 0) {
-                            this.makeAReservationButton.style.display = "none"; // else the button does not appear
+                        + "<span> Nombre de vélo(s) disponible(s) : </span>" + this.availableBikes +"<br/>";
+        if (this.status === "OPEN" && this.availableBikes !== 0 ) { 
+            this.makeAReservationButton.style.display = "block"; // if the station is open and bicycles are available, the button "make a reservation" appears
+        } else if (this.status === "CLOSED" || this.availableBikes === 0) {
+            this.makeAReservationButton.style.display = "none"; // else the button does not appear
                         }
+                        
     },
 
 
@@ -110,7 +114,7 @@ var reservation = {
             ajaxGet("https://api.jcdecaux.com/vls/v1/stations/"+ this.stationNumber +"?contract=Lyon&apiKey=9e292c7515f5523f83cac0ab672bb104cf9bdd3f", function(station) {
                 station = JSON.parse(station);
 
-                if (station.available_bikes > 0) {
+                if (this.availableBikes > 0) {
 
                     // layout of the elements                    
                     this.formatTheDetails();
@@ -142,11 +146,11 @@ var reservation = {
     },
 
     formatTheDetails: function() {
-        this.available_bikes_update = this.available_bikes - 1; // increment the number of available bikes
+        this.availableBikes_update = this.availableBikes - 1; // increment the number of available bikes
         this.stationDetails.innerHTML = this.name + "</br>"
                         + "<span>Adresse : </span>" + this.address + "<br/>"
                         + "<span>Etat : </span>" + this.status + "<br/>" 
-                        + "<span> Nombre de vélo(s) disponible(s) : </span>" + this.available_bikes_update +"<br/>"
+                        + "<span> Nombre de vélo(s) disponible(s) : </span>" + this.availableBikes_update +"<br/>"
         this.makeAReservationButton.setAttribute("disabled", true);
     },
     
@@ -190,7 +194,7 @@ var reservation = {
         this.details.style.display = "none";
         this.makeAReservationButton.removeAttribute("disabled");
         this.cancelReservationButton.style.display = "none";
-        if (this.status === "OPEN" && this.available_bikes !== 0 ) {
+        if (this.status === "OPEN" && this.availableBikes !== 0 ) {
             this.makeAReservationButton.style.display = "block";
         }
     },
