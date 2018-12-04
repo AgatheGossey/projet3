@@ -1,5 +1,6 @@
 var reservation = {
 
+
     init : function(reservationId) {
 
         this.reservation = document.getElementById(reservationId);
@@ -31,73 +32,111 @@ var reservation = {
         this.mainTimer = Object.create(timer);
 
         this.addListeners();
+
     },
+
 
     addListeners: function() {
+
+        // event at the click of the buttons
         this.makeAReservationButton.addEventListener("click", this.bookTheBike.bind(this));
-        this.signature.addEventListener("click", function() { this.reservationButton.removeAttribute('disabled') }.bind(this)); // reactive the reservation button to be sure that the user has signed
+        this.reservationButton.addEventListener("click", this.checkTheReservation.bind(this));
+        this.cancelReservationButton.addEventListener("click", this.cancelTheReservation.bind(this));
+
+        // reaction of the reservationBubutton to be sure that the user has signed
+        this.signature.addEventListener("click", function() { this.reservationButton.removeAttribute('disabled') }.bind(this)); 
         this.signature.addEventListener("touchmove", function() { this.reservationButton.removeAttribute('disabled') }.bind(this));
         this.clearSignatureButton.addEventListener("click", function () { this.reservationButton.setAttribute("disabled", true) }.bind(this));
-        this.reservationButton.addEventListener("click", this.checkTheForm.bind(this));
-        this.cancelReservationButton.addEventListener("click", this.cancelTheReservation.bind(this));
+
     },
 
+
+    // DETAILS OF THE CHOSEN STATION
+
     describeStation: function(station) {
-        this.introduction.style.display ="none"; 
-        this.details.style.display = "block";
-        this.detailsTitle.style.display = "block";
-        this.stationNumber = station.number;
+
         // recover information from a station 
+        this.stationNumber = station.number;
         this.name = station.name; 
         this.address = station.address; 
         this.status = station.status; 
         this.available_bikes = station.available_bikes; 
+
+        // layout of the element
+        this.introduction.style.display ="none"; 
+        this.details.style.display = "block";
+        this.detailsTitle.style.display = "block";
         this.stationDetails.innerHTML = this.name + "</br>"
                         + "<span>Adresse : </span>" + this.address + "<br/>"
                         + "<span>Etat : </span>" + this.status + "<br/>" 
-                        + "<span> Nombre de vélo(s) disponible(s) : </span>" + this.available_bikes +"<br/>"  // adding text on the site
-        if (this.status === "OPEN" && this.available_bikes !== 0 ) { 
-            this.makeAReservationButton.style.display = "block"; // if the station is open and bicycles are available, the button "make a reservation" appears
-        } else if (this.status === "CLOSED" || this.available_bikes === 0) {
-            this.makeAReservationButton.style.display = "none"; // else the button does not appear
-        }
+                        + "<span> Nombre de vélo(s) disponible(s) : </span>" + this.available_bikes +"<br/>";
+
+                        if (this.status === "OPEN" && this.available_bikes !== 0 ) { 
+                            this.makeAReservationButton.style.display = "block"; // if the station is open and bicycles are available, the button "make a reservation" appears
+                        } else if (this.status === "CLOSED" || this.available_bikes === 0) {
+                            this.makeAReservationButton.style.display = "none"; // else the button does not appear
+                        }
     },
 
+
+    // DISPLAY OF THE ELEMENTS TO MAKE THE RESERVATION
+
     bookTheBike: function() {
-        // returns the value associated with the key passed as a parameter
+
+        // API WEB STORAGE - returns the value associated with the key passed as a parameter
         this.nameForm.value = localStorage.getItem('name');
         this.surnameForm.value = localStorage.getItem('surname');
+
+        // layout of the element
         this.makeAReservationButton.style.display = "none";
         this.reservationElt.style.display = "flex";
         this.dataForBooking.style.display = "block";
         this.mainSignature.init("signature");
-        this.reservationButton.setAttribute("disabled", true); // deactivate the reservation button 
+        this.reservationButton.setAttribute("disabled", true); 
     },
 
-    checkTheForm: function(e) {
-        if (this.nameForm.value != "" && this.surnameForm.value !== "") {  // if the elements of the form are completed
+
+    // BEHAVIOR WHEN THE RESERVATION IS MADE
+
+    checkTheReservation: function(e) {
+    // checks before confirming the reservation
+
+        // first : check the form 
+        if (this.nameForm.value != "" && this.surnameForm.value !== "") {  
+
             e.preventDefault(); // the default action that belongs to the event will not occur
-            // Make a new call to the API to verify that a bike is still available
+
+            // second : check that a bike is still available
             ajaxGet("https://api.jcdecaux.com/vls/v1/stations/"+ this.stationNumber +"?contract=Lyon&apiKey=9e292c7515f5523f83cac0ab672bb104cf9bdd3f", function(station) {
                 station = JSON.parse(station);
+
                 if (station.available_bikes > 0) {
-                    this.startDate = new Date(); // save the date of the reservation to use if the user closes the page
+
+                    // layout of the elements                    
                     this.formatTheDetails();
                     this.formatTheReservationElt();
                     this.formatTheUserData();
                     this.startTheTimer();
+
+                    // API WEB STORAGE 
+                    this.startDate = new Date(); // save the date of the reservation to use if the user closes the page
                     // adds to the local storage
                     localStorage.setItem('name', this.nameForm.value);
                     localStorage.setItem('surname', this.surnameForm.value);
                     // adds to the session storage
                     sessionStorage.setItem('stationName', this.name);
                     sessionStorage.setItem('startDate', this.startDate);
+
                 } else {
+
+                    // layout of the element
                     this.introduction.style.display = "block";
                     this.introduction.innerText = "Il n'y a plus de vélos disponibles. Merci de sélectionnez une autre station.";
                     this.details.style.display = "none";
                     this.reservationElt.style.display = "none";
+
                 }
+
             }.bind(this));
         }
     },
@@ -113,8 +152,8 @@ var reservation = {
     
     formatTheReservationElt: function() {
         this.dataForBooking.style.display = "none";
-        this.cancelReservationButton.style.display = "block";
         this.mainSignature.clearSignature();
+        this.cancelReservationButton.style.display = "block";
     },
 
     formatTheUserData: function() {
@@ -129,11 +168,20 @@ var reservation = {
         this.mainTimer.startTimer();
     },
 
+    
+    // CANCEL THE RESERVATION 
+
     cancelTheReservation: function(e) {
+
         e.preventDefault();
+
+        // API WEB STORAGE 
         sessionStorage.clear(); // cancel the storage 
+
+        // layout of the element
         this.formatTheCancellationElt();
         this.formatTheCancellationOfTimerElt();
+        
     },
 
     formatTheCancellationElt: function() {
