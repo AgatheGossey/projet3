@@ -28,7 +28,7 @@ function init() {
             
             mainReservation.init("reservation");
             mainReservation.mainSignature.init("signature");
-            mainReservation.mainTimer.init("countingDisplay", timeLeft);
+            mainReservation.mainTimer.init("counterElt", timeLeft);
 
             mainReservation.name = stationName;
             

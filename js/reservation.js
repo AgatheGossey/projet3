@@ -79,7 +79,7 @@ var reservation = {
         } else if (this.status === "CLOSED" || this.availableBikes === 0) {
             this.makeAReservationButton.style.display = "none"; // else the button does not appear
                         }
-                        
+
     },
 
 
